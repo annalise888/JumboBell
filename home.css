@@ -1,0 +1,473 @@
+body{
+  height: 100vh;
+    Font-family: Lucida Bright, Georgia, serif;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url("https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2534&q=80");
+    background-size:cover;
+    background-position: center;
+}
+
+.navbar {
+  height: 80px;
+  background-color: transparent;
+  border: none;
+  color: green;
+  z-index: 9001;
+  /* transition: background-color 1s ease 0s; */
+}
+
+
+.welcome-container{
+  text-align: center;
+  color: white;
+}
+
+#footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  /* opacity: 0.5; */
+  text-align: center;
+}
+
+/* btn design credits to David Conner at CodePen https://codepen.io/davidicus/pen/emgQKJ */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+.btn-1 {
+  background: darken($red, 1.5%);
+  font-weight: 100;
+  
+  svg {
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0; 
+    width: 100%; 
+  }
+  
+  rect {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-dasharray: 422, 0;
+    transition: all 0.35s linear;
+  }
+}
+
+.btn-1:hover {
+  background: rgba($red, 0);
+  font-weight: 900;
+  letter-spacing: 1px;
+  
+  rect {
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.animation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.container1 {
+  width: 120px;
+  height: 300px;
+  margin: 0px auto;
+  position: relative;
+}
+
+.container1:hover .lid {
+  top: 5px;
+}
+
+.lid {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  border-radius: 80px 80px 0px 0px;
+  top: 200px;
+  transition: top ease .5s;
+  background-color: #ccc;
+  background: radial-gradient(
+    circle farthest-corner at -10px -60px,
+    #ccc 75%,
+    #bbb 75%
+  );
+  z-index: 3;
+}
+
+.lid::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50px;
+  width: 20px;
+  height: 10px;
+  background: linear-gradient(to bottom, grey 50%, transparent 50%),
+    linear-gradient(
+      to right,
+      transparent 25%,
+      darkgray 25%,
+      darkgray 75%,
+      transparent 75%
+    );
+}
+
+.plate {
+  width: 110%;
+  left: -5%;
+  height: 10px;
+  background: linear-gradient(155deg, #aaa 50%, #999 50%);
+  position: absolute;
+  top: 270px;
+}
+
+.hamburger {
+  z-index: -1;
+  position: absolute;
+  top: 202px;
+  left: 30px;
+  width: 60px;
+  height: 68px;
+  border-radius: 20px 20px 5px 5px;
+  color: red;
+  background:
+    radial-gradient(
+      circle farthest-corner at 18px 10px,
+      #FAE5D3 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 30px 16px,
+      #FAE5D3 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 20px,
+      #FAE5D3 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 10px 20px,
+      #FAE5D3 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 48px 10px,
+      #FAE5D3 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+    to bottom,
+    tan 30px,
+    transparent 30px,
+    transparent 58px,
+    tan 58px
+  );
+}
+
+.hamburger::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 66px;
+  background: linear-gradient(135deg, transparent 60%, #873600 60%),
+    linear-gradient(45deg, #873600 60%, #f4d03f 60%);
+  top: 35px;
+  left: -3px;
+  border-radius: 20px;
+  border-top: 3px solid #f4d03f;
+}
+
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 96%;
+  height: 5px;
+  background-color: #c0392b;
+  top: 30px;
+  left: 2%;
+}
+
+.pasta {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  background-color: red;
+  top: 230px;
+  left: 10px;
+  background: radial-gradient(
+      circle farthest-corner at 48px 38px,
+      #e74c3c 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle farthest-corner at 64px 42px,
+      goldenrod 8px,
+      #fad7a0 8px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    ),
+    radial-gradient(
+      circle farthest-corner at 60px 18px,
+      #e74c3c 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 48px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    ),
+    radial-gradient(
+      circle farthest-corner at 22px 24px,
+      #e74c3c 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 30px,
+      goldenrod 8px,
+      #fad7a0 8px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    );
+}
+
+.pasta::before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 20px;
+  left: 72px;
+  top: -10px;
+  transform: rotate(45deg);
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 1px white, 0px 0px 0px 1px white;
+  background: linear-gradient(
+      to right,
+      transparent 8px,
+      #ccc 8px,
+      #ccc 12px,
+      transparent 12px
+    ),
+    linear-gradient(to bottom, white 60%, #ccc 60%, #ccc 70%, transparent 70%),
+    linear-gradient(
+      to right,
+      #ccc 4px,
+      white 4px,
+      white 8px,
+      #ccc 8px,
+      #ccc 12px,
+      white 12px,
+      white 16px,
+      #ccc 16px
+    );
+}
+
+.taco {
+  position: absolute;
+  height: 40px;
+  width: 80px;
+  top: 230px;
+  left: 20px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 40px 25px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 30px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 55px 30px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 40px 40px,
+      goldenrod 30px,
+      transparent 30px
+    ),
+    radial-gradient(
+      circle farthest-corner at 36px 13px,
+      #d42a19 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 64px 30px,
+      #d42a19 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 58px 24px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 46px 16px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 26px 20px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 16px 28px,
+      green 10px,
+      transparent 10px
+    );
+}
+
+.cake {
+  position: absolute;
+  top: 222px;
+  left: 15px;
+  height: 48px;
+  width: 90px;
+  border-radius: 8px 8px 0px 0px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 25px 20px,
+      pink 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle farthest-corner at 55px 35px,
+      pink 4px,
+      transparent 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #6E2C00 15px,
+      pink 15px,
+      pink 20px,
+      #6E2C00 20px,
+      #6E2C00 30px,
+      pink 30px,
+      pink 35px,
+      #6E2C00 35px
+    );
+}
+
+.cake::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 90px;
+  border-radius: 6px 6px 0px 0px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 85px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 65px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 5px 0px,
+      pink 10px,
+      transparent 10px
+    );
+}
+
+.cake::after {
+  position: absolute;
+  top: -20px;
+  content: "";
+  height: 20px;
+  width: 90px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 65px 18px,
+      #C0392B 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 18px,
+      #C0392B 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 18px,
+      #C0392B 8px,
+      transparent 8px
+    );
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+}

@@ -21,7 +21,7 @@ if (req.url == "/")
 		res.write(txt);
 	});
 }
-else if (req.url == "login.html/process")
+else
 {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");

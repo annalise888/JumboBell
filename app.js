@@ -21,7 +21,7 @@ if (req.url == "/")
 		res.write(txt);
 	});
 }
-else if (req.url == "/process")
+else if (req.url == "login.html/process")
 {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
@@ -38,45 +38,50 @@ else if (req.url == "/process")
 	res.write(" email: ");
 	res.write(Email);
 	
-	MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
-	  if(err) { return console.log(err); }
+	if (req.url == "login.html/process"){
+		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
+		  if(err) { return console.log(err); }
 
-		var dbo = db.db("users");
-		var collection = dbo.collection('profiles');
-		var theQuery = {email: Email} 
-			collection.find(theQuery).toArray(function(err, items) {
-				  if (err) {
-					console.log("Error: '" + err+"'}");
-				  } 
-				  else if(items.length == 0){
-					  var newData = {"fullname": name, "email": Email,"foods":[]};
-					  collection.insertOne(newData, function(err, res){
-						  if(err) { 
-							  console.log("query err: " + err); 
-							  return; 
-						}
-					  console.log("new document inserted");
+			var dbo = db.db("users");
+			var collection = dbo.collection('profiles');
+			var theQuery = {email: Email} 
+				collection.find(theQuery).toArray(function(err, items) {
+					  if (err) {
+						console.log("Error: '" + err+"'}");
+					  } 
+					  else if(items.length == 0){
+						  var newData = {"fullname": name, "email": Email,"foods":[]};
+						  collection.insertOne(newData, function(err, res){
+							  if(err) { 
+								  console.log("query err: " + err); 
+								  return; 
+							}
+						  console.log("new document inserted");
+					});
+				} 
+
 				});
-			} 
-			
-			});
 
-		setTimeout(function(){db.close;}, 2000);
-		console.log("Success!");
+			setTimeout(function(){db.close;}, 2000);
+			console.log("Success!");
 
-	});  
-	MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-		if (err) {
-			return console.log("err");
+		});  
+	}
+		if (req.url == "login.html/process"){
+		MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+
+			getFood(pdata['foodname'],coll);
+
+			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+		});
 		}
-		var dbo = db.db("tuftsdining");
-		var coll = dbo.collection("menu");
-
-		getFood(pdata['foodname'],coll);
-
-		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 	});
-	});
+
 
 }
 setTimeout(function(){res.end();}, 3000);

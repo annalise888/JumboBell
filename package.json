@@ -1,11 +1,11 @@
 
 {
-  "name": "signin",
+  "name": "jumbo-bell",
   "version": "1.0.0",
   "description": "my sample node app",
-  "main": "signin.js",
+  "main": "app.js",
   "scripts": {
-  "start": "node signin.js"
+  "start": "node app.js"
 },
   "repository": {
   "type": "git",

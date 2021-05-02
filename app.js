@@ -10,9 +10,14 @@ http.createServer(function (req, res) {
 if (req.url == "/")
 {
 	file = 'login.html';
+	file2 = 'search.html';
 	fs.readFile(file, function(err, txt) {
 		if(err) { return console.log(err); }
 		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(txt);
+	});
+	fs.readFile(file2, function(err, txt) {
+		if(err) {return console.log(err); }
 		res.write(txt);
 	});
 }

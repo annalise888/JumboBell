@@ -67,7 +67,7 @@ else if (req.url == "login.html/process")
 
 		});  
 	}
-		if (req.url == "login.html/process"){
+		if (req.url == "search.html/process"){
 		MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 			if (err) {
 				return console.log("err");

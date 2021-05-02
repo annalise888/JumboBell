@@ -1,0 +1,27 @@
+
+{
+  "name": "signin",
+  "version": "1.0.0",
+  "description": "my sample node app",
+  "main": "signin.js",
+  "scripts": {
+  "start": "node signin.js"
+},
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "dependencies": {
+    "mongodb": "^3.6.0"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "homepage": ""
+}

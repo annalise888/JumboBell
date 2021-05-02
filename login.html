@@ -41,8 +41,8 @@
     <div class="unnathy">
     <form action = "https://jumbo-bell.herokuapp.com/process" method = "post">
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        <p><input type="hidden" id = "email" name="email" /></p>
-        <p><input type="hidden" id = "fullname" name="fullname" /></p>
+        <p><input type="text" id = "email" name="email" /></p>
+        <p><input type="text" id = "fullname" name="fullname" /></p>
     <input type="submit" value="Sign In">
     </form>
         <script>
@@ -51,7 +51,6 @@
             console.log("ID: " + profile.getId()); 
             document.getElementById('fullname').value = profile.getName();
             document.getElementById('email').value = profile.getEmail();
-
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
           }

@@ -96,39 +96,39 @@ function getFood(foodName, coll) {
         }
         
         res.write(sendstring);
-        sendmail(sendstring)
+//         sendmail(sendstring)
 
     })
     
 }
 
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
-function sendmail(sendstring) {
+// function sendmail(sendstring) {
     
     
 
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'cpekowsky@gmail.com',
-        pass: 'stinkfart101'
-      }
-    });
+//     var transporter = nodemailer.createTransport({
+//       service: 'gmail',
+//       auth: {
+//         user: 'cpekowsky@gmail.com',
+//         pass: 'stinkfart101'
+//       }
+//     });
 
-    var mailOptions = {
-      from: 'cpekowsky@gmail.com',
-      to: 'cpekowsky@gmail.com',
-      subject: 'foods being served',
-      text: sendstring
-    };
+//     var mailOptions = {
+//       from: 'cpekowsky@gmail.com',
+//       to: 'cpekowsky@gmail.com',
+//       subject: 'foods being served',
+//       text: sendstring
+//     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
+//     transporter.sendMail(mailOptions, function(error, info){
+//       if (error) {
+//         console.log(error);
+//       } else {
+//         console.log('Email sent: ' + info.response);
+//       }
+//     });
     
-}
+// }

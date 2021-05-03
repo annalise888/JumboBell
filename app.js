@@ -27,6 +27,50 @@ app.get('/login.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+app.post('/login.html/process', function (req, res) {
+  res.writeHead(200, {'Content-Type':'text/html'});
+	console.log("Process the form");
+	pdata = "";
+	req.on('data', data => {
+           pdata += data.toString();
+    });
+  req.on('end', () => {
+	pdata = qs.parse(pdata);
+	var name = String(pdata['fullname']);
+	res.write("name: ");
+	res.write(name);
+	var Email = String(pdata['email']);
+	res.write(" email: ");
+	res.write(Email);
+		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
+		  if(err) { return console.log(err); }
+
+			var dbo = db.db("users");
+			var collection = dbo.collection('profiles');
+			var theQuery = {email: Email} 
+				collection.find(theQuery).toArray(function(err, items) {
+					  if (err) {
+						console.log("Error: '" + err+"'}");
+					  } 
+					  else if(items.length == 0){
+						  var newData = {"fullname": name, "email": Email,"foods":[]};
+						  collection.insertOne(newData, function(err, res){
+							  if(err) { 
+								  console.log("query err: " + err); 
+								  return; 
+							}
+						  console.log("new document inserted");
+					});
+				} 
+
+				});
+
+			setTimeout(function(){db.close;}, 2000);
+			console.log("Success!");
+
+		});  
+});
+});
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
   fs.readFile(file, function(err, txt) {

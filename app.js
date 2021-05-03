@@ -49,9 +49,7 @@ app.post('/login.html/process', function (req, res) {
 	  file = 'index.html';
 	  fs.readFile(file, function(err, txt) {
 	      if(err) { return console.log(err); }
-	      res.writeHead(200, {'Content-Type': 'text/html'});
 	      res.write(txt);
-	      setTimeout(function(){res.end();}, 2000);
 	    });
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }

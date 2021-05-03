@@ -5,8 +5,11 @@ takes in name of user
 
 adds current food to that users array of foods 
 
-
 */
+
+/*
+
+
 var http = require('http');
 var port = process.env.PORT || 3000;
 
@@ -81,20 +84,7 @@ http.createServer(function (req, res) {
             })
             
             
-            
-
-            /*
-            
-            collection.insertOne(newData2, function(err, res) {
-            if(err) { console.log("query err: " + err); return; }
-            console.log("new document inserted");
-
-            }   );
-            
-            
-            */
-
-
+        
 
 
             
@@ -109,4 +99,4 @@ http.createServer(function (req, res) {
 
 }).listen(8080);
 
-
+*/

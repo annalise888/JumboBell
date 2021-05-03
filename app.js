@@ -9,7 +9,7 @@ var app = express();
 app.use(express.static("public"));
 
 var file;
-app.get('/', function (req, res) {
+app.post('/', function (req, res) {
   file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/login.html', function (req, res) {
+app.post('/login.html', function (req, res) {
   file = 'login.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
@@ -27,7 +27,7 @@ app.get('/login.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/my_choice.html', function (req, res) {
+app.post('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
@@ -36,7 +36,7 @@ app.get('/my_choice.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/about.html', function (req, res) {
+app.post('/about.html', function (req, res) {
   file = 'about.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
@@ -45,7 +45,7 @@ app.get('/about.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/menu.html', function (req, res) {
+app.post('/menu.html', function (req, res) {
   file = 'menu.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }

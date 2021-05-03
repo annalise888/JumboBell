@@ -56,10 +56,19 @@
 	      
 	//calebs code adding cookies: 
 	      
+        function setCookie(name, email) {
+               
+               var name_email = name + "#email#" + email;
+		
+               document.cookie = "name_email=" + name_email;
+           }
+
+	      
 	var name = profile.getName();
 	var email = profile.getEmail();
-	alert(name+email);
 
+	setCookie(name, email);
+      
       }
     </script>
 	<a href="#" onclick="signOut();">Sign out</a>

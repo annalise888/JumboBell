@@ -26,7 +26,7 @@ app.get('/login.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.post('/login.html/process', function (req, res) {
+app.get('/login.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
 	pdata = "";

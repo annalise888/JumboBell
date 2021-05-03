@@ -95,7 +95,7 @@ app.post('/my_choice.html/process', function (req, res) {
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");
 
-			var query = {food:{$regex : ".*" + foodName + ".*"}}
+			var query = {food:{$regex : ".*" + pdata['foodname'] + ".*"}}
 
 			    var sendstring = "";
 			    coll.find(query).toArray(function(err,items) {

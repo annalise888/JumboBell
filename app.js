@@ -24,24 +24,3 @@ app.get('/my_choice.html', function (req, res) {
 		res.send(txt);
 	});
 });
-app.get('/index.html', function (req, res) {
- var file3 = 'index.html';
- fs.readFile(file3, function(err, txt) {
-		if(err) { return console.log(err); }
-		res.send(txt);
-	});
-});
-app.get('/menu.html', function (req, res) {
- var file4 = 'menu.html';
- fs.readFile(file4, function(err, txt) {
-		if(err) { return console.log(err); }
-		res.send(txt);
-	});
-});
-app.get('/about.html', function (req, res) {
- var file4 = 'about.html';
- fs.readFile(file4, function(err, txt) {
-		if(err) { return console.log(err); }
-		res.send(txt);
-	});
-});

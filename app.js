@@ -45,11 +45,14 @@ app.post('/login.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var name = String(pdata['fullname']);
-	res.write("name: ");
-	res.write(name);
 	var Email = String(pdata['email']);
-	res.write(" email: ");
-	res.write(Email);
+	  file = 'index.html';
+	  fs.readFile(file, function(err, txt) {
+	      if(err) { return console.log(err); }
+	      res.writeHead(200, {'Content-Type': 'text/html'});
+	      res.write(txt);
+	      setTimeout(function(){res.end();}, 2000);
+	    });
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
 

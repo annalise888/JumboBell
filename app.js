@@ -153,7 +153,6 @@ app.get('/menu.html', function (req, res) {
 
 app.get('/menu.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
-	res.write("yep!!!");
 	
 	//actual code for connecting to the database and printing all menus 
 	

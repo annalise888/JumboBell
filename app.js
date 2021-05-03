@@ -18,7 +18,7 @@ if (req.url == "/login.html")
 	});
 }
 if(req.url == "/my_choice.html"){
-	file2 = 'search.html';
+	file2 = 'my_choice.html';
 	fs.readFile(file2, function(err, txt) {
 		if(err) {return console.log(err); }
 		res.write(txt);

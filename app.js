@@ -7,21 +7,24 @@ const urll = process.env.MONGODB_URLL;
 const url2 = "mongodb+srv://annalisejacobson:annalise@cluster0.0y4mi.mongodb.net/tuftsdining?retryWrites=true&w=majority";
 
 http.createServer(function (req, res) {
-if (req.url == "/")
+if (req.url == "/login.html")
 {
 	file = 'login.html';
-	file2 = 'search.html';
+	
 	fs.readFile(file, function(err, txt) {
 		if(err) { return console.log(err); }
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(txt);
 	});
+}
+if(req.url == "/my_choice.html"){
+	file2 = 'search.html';
 	fs.readFile(file2, function(err, txt) {
 		if(err) {return console.log(err); }
 		res.write(txt);
 	});
 }
-else
+else 
 {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");

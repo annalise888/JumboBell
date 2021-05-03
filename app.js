@@ -15,6 +15,7 @@ app.get('/', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
     });
 });
 app.get('/login.html', function (req, res) {
@@ -23,6 +24,7 @@ app.get('/login.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
     });
 });
 app.get('/my_choice.html', function (req, res) {
@@ -31,6 +33,7 @@ app.get('/my_choice.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
     });
 });
 app.get('/about.html', function (req, res) {
@@ -39,6 +42,7 @@ app.get('/about.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
     });
 });
 app.get('/menu.html', function (req, res) {
@@ -47,7 +51,8 @@ app.get('/menu.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
     });
 });
-setTimeout(function(){res.end();}, 2000);
+
 app.listen(port, function() {console.log("server started successfully");});

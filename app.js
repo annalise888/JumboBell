@@ -118,8 +118,6 @@ app.post('/my_choice.html/process', function (req, res) {
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 		});
-
-			setTimeout(function(){db.close;}, 2000);
 			console.log("Success!");
 
 		});  

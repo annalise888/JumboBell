@@ -8,6 +8,30 @@ const url2 = "mongodb+srv://annalisejacobson:annalise@cluster0.0y4mi.mongodb.net
 var app = express();
 app.use(express.static("public"));
 
+function getFood(foodName, coll) {
+    var query = {food:{$regex : ".*" + foodName + ".*"}}
+    
+    var sendstring = "";
+    coll.find(query).toArray(function(err,items) {
+        if (err) {
+           res.write("Error: " + err);
+        } else if (items.length == 0) {
+            res.write("No food being served with that name.");
+        } else {
+            for (i=0; i < items.length; i++) {
+                //console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
+                sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
+                //console.log(sendstring);
+            }
+        }
+        
+        res.write(sendstring);
+//         sendmail(sendstring)
+
+    })
+    
+};
+
 var file;
 app.get('/', function (req, res) {
   file = 'index.html';
@@ -127,26 +151,3 @@ app.get('/menu.html', function (req, res) {
 
 app.listen(port, function() {console.log("server started successfully");});
 
-function getFood(foodName, coll) {
-    var query = {food:{$regex : ".*" + foodName + ".*"}}
-    
-    var sendstring = "";
-    coll.find(query).toArray(function(err,items) {
-        if (err) {
-           res.write("Error: " + err);
-        } else if (items.length == 0) {
-            res.write("No food being served with that name.");
-        } else {
-            for (i=0; i < items.length; i++) {
-                //console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
-                sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-                //console.log(sendstring);
-            }
-        }
-        
-        res.write(sendstring);
-//         sendmail(sendstring)
-
-    })
-    
-}

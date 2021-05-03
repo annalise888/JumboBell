@@ -16,7 +16,7 @@ if (req.url == "/login.html")
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(txt);
 	});
-	if(req.url == "/process"){
+	if(req.url == "login.html/process"){
 		res.writeHead(200, {'Content-Type':'text/html'})
 		console.log("Process the form");
 		pdata = "";
@@ -68,7 +68,7 @@ if (req.url == "/login.html")
 			if(err) {return console.log(err); }
 			res.write(txt);
 		});
-			if (req.url == "/process"){
+			if (req.url == "my_choice.html/process"){
 			res.writeHead(200, {'Content-Type':'text/html'})
 			console.log("Process the form");
 			pdata = "";

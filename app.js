@@ -16,78 +16,82 @@ if (req.url == "/login.html")
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(txt);
 	});
-}
-if(req.url == "/my_choice.html"){
-	file2 = 'my_choice.html';
-	fs.readFile(file2, function(err, txt) {
-		if(err) {return console.log(err); }
-		res.write(txt);
-	});
-}
-else
-{
-	res.writeHead(200, {'Content-Type':'text/html'})
-	console.log("Process the form");
-	pdata = "";
-	req.on('data', data => {
-           pdata += data.toString();
-    });
-	req.on('end', () => {
-	pdata = qs.parse(pdata);
-	if (req.url == "login.html/process"){
-		console.log("here2");
-		var name = String(pdata['fullname']);
-		res.write("name: ");
-		res.write(name);
-		var Email = String(pdata['email']);
-		res.write(" email: ");
-		res.write(Email);
-		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
-		  if(err) { return console.log(err); }
-
-			var dbo = db.db("users");
-			var collection = dbo.collection('profiles');
-			var theQuery = {email: Email} 
-				collection.find(theQuery).toArray(function(err, items) {
-					  if (err) {
-						console.log("Error: '" + err+"'}");
-					  } 
-					  else if(items.length == 0){
-						  var newData = {"fullname": name, "email": Email,"foods":[]};
-						  collection.insertOne(newData, function(err, res){
-							  if(err) { 
-								  console.log("query err: " + err); 
-								  return; 
-							}
-						  console.log("new document inserted");
-					});
-				} 
-
-				});
-
-			setTimeout(function(){db.close;}, 2000);
-			console.log("Success!");
-
-		});  
-	}
-		if (req.url == "my_choice.html/process"){
-		res.write("here1");
-		MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-			if (err) {
-				return console.log("err");
-			}
-			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu");
-
-			getFood(pdata['foodname'],coll);
-
-			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+	if(req.url == "/process"){
+		res.writeHead(200, {'Content-Type':'text/html'})
+		console.log("Process the form");
+		pdata = "";
+		req.on('data', data => {
+			   pdata += data.toString();
 		});
-		}
-	});
+		req.on('end', () => {
+		pdata = qs.parse(pdata);
+			var name = String(pdata['fullname']);
+			res.write("name: ");
+			res.write(name);
+			var Email = String(pdata['email']);
+			res.write(" email: ");
+			res.write(Email);
+			MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
+			  if(err) { return console.log(err); }
 
+				var dbo = db.db("users");
+				var collection = dbo.collection('profiles');
+				var theQuery = {email: Email} 
+					collection.find(theQuery).toArray(function(err, items) {
+						  if (err) {
+							console.log("Error: '" + err+"'}");
+						  } 
+						  else if(items.length == 0){
+							  var newData = {"fullname": name, "email": Email,"foods":[]};
+							  collection.insertOne(newData, function(err, res){
+								  if(err) { 
+									  console.log("query err: " + err); 
+									  return; 
+								}
+							  console.log("new document inserted");
+						});
+					} 
 
+					});
+
+				setTimeout(function(){db.close;}, 2000);
+				console.log("Success!");
+
+			});  
+		});
+
+	}
 }
+	if(req.url == "/my_choice.html"){
+		file2 = 'my_choice.html';
+		fs.readFile(file2, function(err, txt) {
+			if(err) {return console.log(err); }
+			res.write(txt);
+		});
+			if (req.url == "/process"){
+			res.writeHead(200, {'Content-Type':'text/html'})
+			console.log("Process the form");
+			pdata = "";
+			req.on('data', data => {
+				   pdata += data.toString();
+			});
+			req.on('end', () => {
+				pdata = qs.parse(pdata);
+				MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+					if (err) {
+						return console.log("err");
+					}
+					var dbo = db.db("tuftsdining");
+					var coll = dbo.collection("menu");
+
+					getFood(pdata['foodname'],coll);
+
+					setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+				});
+			});
+			}
+
+		}
 setTimeout(function(){res.end();}, 3000);
 }).listen(port);
 

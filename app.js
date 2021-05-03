@@ -34,14 +34,13 @@ else
     });
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var name = String(pdata['fullname']);
-	res.write("name: ");
-	res.write(name);
-	var Email = String(pdata['email']);
-	res.write(" email: ");
-	res.write(Email);
-	
 	if (req.url == "login.html/process"){
+		var name = String(pdata['fullname']);
+		res.write("name: ");
+		res.write(name);
+		var Email = String(pdata['email']);
+		res.write(" email: ");
+		res.write(Email);
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
 

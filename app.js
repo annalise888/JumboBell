@@ -24,7 +24,7 @@ app.get('/my_choice.html', function (req, res) {
 		res.send(txt);
 	});
 });
-app.get('/', function (req, res) {
+app.get('/index.html', function (req, res) {
  var file3 = 'index.html';
  fs.readFile(file3, function(err, txt) {
 		if(err) { return console.log(err); }

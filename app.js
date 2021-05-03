@@ -9,18 +9,6 @@ var app = express();
 app.use(express.static("public"));
 
 
-app.get('/login.html', function (req, res) {
- var file = 'login.html';
- fs.readFile(file, function(err, txt) {
-		if(err) { return console.log(err); }
-		res.send(txt);
-	});
-});
-
-app.get('/my_choice.html', function (req, res) {
- var file2 = 'my_choice.html';
- fs.readFile(file2, function(err, txt) {
-		if(err) { return console.log(err); }
-		res.send(txt);
-	});
+app.get('/', function (req, res) {
+res.send("hello world");
 });

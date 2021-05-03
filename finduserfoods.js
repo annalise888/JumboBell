@@ -6,6 +6,8 @@ finds all of there foods, and then finds all the foods
 in the foods database that match those foods.
 
 */
+
+/*
 var http = require('http');
 var port = process.env.PORT || 3000;
 
@@ -134,4 +136,5 @@ http.createServer(function (req, res) {
 
 }).listen(8080);
 
+*/
 

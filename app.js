@@ -10,6 +10,11 @@ app.use(express.static("public"));
 
 
 app.get('/', function (req, res) {
-res.send("hello world");
+  var file = 'index.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+    });
 });
 app.listen(port, function() {console.log("server started successfully");});

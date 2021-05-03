@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+      
+      <script language = "javascript">
+           
+           
+           name = "Caleb";
+           email = "calebpekowsky@gmail.com"
+           
+           function setCookie(name, email) {
+               //document.write(name+ " " + email);
+             //  document.write("<br>");
+               
+               var name_email = name + "#email#" + email;
+             //  document.write(name_email);
+             //  document.write("<br>");
+               
+               document.cookie = "name_email=" + name_email;
+           }
+           
+           setCookie(name, email);
+           
+           function getCookie() {
+               var decodedCookie = decodeURIComponent(document.cookie);
+               decodedCookie = decodedCookie.split(';');
+
+               decodedCookie = decodedCookie[1];
+               
+               document.write(decodedCookie);
+
+               document.write("<br>");
+               
+           }
+           
+           getCookie();
+
+
+          </script>
+
+      
+    <p>Cookie test 1. Please follow <a href="cookietest2.html">this link</a>.</p>
+  </body>
+</html>

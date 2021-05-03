@@ -14,9 +14,9 @@ function getFood(foodName, coll) {
     var sendstring = "";
     coll.find(query).toArray(function(err,items) {
         if (err) {
-           res.write("Error: " + err);
+           console.log("Error: " + err);
         } else if (items.length == 0) {
-            res.write("No food being served with that name.");
+            console.log("No food being served with that name.");
         } else {
             for (i=0; i < items.length; i++) {
                 //console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);

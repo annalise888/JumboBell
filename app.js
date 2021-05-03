@@ -16,7 +16,7 @@ function getFood(foodName, coll) {
         if (err) {
            console.log("Error: " + err);
         } else if (items.length == 0) {
-            console.log("No food being served with that name.");
+            sendstring = "No food being served with that name.";
         } else {
             for (i=0; i < items.length; i++) {
                 //console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
@@ -25,7 +25,7 @@ function getFood(foodName, coll) {
             }
         }
         
-        res.write(sendstring);
+        return sendstring;
 //         sendmail(sendstring)
 
     })
@@ -120,7 +120,7 @@ app.post('/my_choice.html/process', function (req, res) {
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");
 
-			getFood(pdata['foodname'],coll);
+			res.write(getFood(pdata['foodname'],coll));
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 		});

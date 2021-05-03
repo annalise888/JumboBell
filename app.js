@@ -24,7 +24,7 @@ if(req.url == "/my_choice.html"){
 		res.write(txt);
 	});
 }
-else if (req.url == "/process")
+if (req.url == "/process")
 {
 	res.writeHead(200, {'Content-Type':'text/html'})
 	console.log("Process the form");

@@ -154,6 +154,80 @@ app.get('/menu.html', function (req, res) {
 app.get('/menu.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	res.write("yep!!!");
+	
+	//actual code for connecting to the database and printing all menus 
+	
+	    //actual mongo query 
+    MongoClient.connect(url2, { useUnifiedTopology: true }, function(err, db) {
+        if(err) { res.write("Connection err: " + err); return; }
+        
+        var dbo = db.db("tuftsdining");
+        
+        console.log(3);
+        
+        
+        var coll = dbo.collection('menu3');
+        
+        console.log(4);
+        
+        
+        
+        var myquery = {  };
+        
+        //here, the query is for things where the ticker is the same as user input
+        
+        coll.find( ).toArray(function(err, items) {
+            
+            if (err) {
+                res.write("Error: " + err);  
+            } 
+            
+            if( items.length == 0 ) {
+                res.write("no foods.");
+            }
+            
+            else   {
+                
+                
+                //really stupid: going through this array like 30 times 
+                mealarr = [];
+                mealarr = ["breakfast", "Lunch", "Dinner"];
+                
+                
+                for(var numday = 0; numday < 7; numday ++ ) {
+                    
+                    for(var currmeal = 0; currmeal < 3; currmeal ++) {
+                        
+                        for (i=0; i<items.length; i++) {
+                            
+                            
+                            if(items[i].numdate == numday && items[i].meal == mealarr[currmeal]) {
+                                res.write("hall: " + items[i].hall + " meal: " + items[i].meal + " food: " + items[i].food  + " date: " + items[i].longdate);
+                                res.write( "<br>" );
+                                
+                            }
+                            
+                        }
+                        
+                    }                        
+                    
+                }
+                
+            }
+            
+            db.close();
+            
+        })
+        
+        
+        
+        
+    });  //end connect
+
+	
+	
+	
+	//end of code for connecting to database and printing all menus 
 	setTimeout(function(){res.end();}, 2000);
 });
 

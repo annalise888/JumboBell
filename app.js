@@ -13,8 +13,7 @@ app.post('/login.html', function (req, res) {
  var file = 'login.html';
  fs.readFile(file, function(err, txt) {
 		if(err) { return console.log(err); }
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(txt);
+		res.send(txt);
 	});
 });
 
@@ -22,31 +21,27 @@ app.post('/my_choice.html', function (req, res) {
  var file2 = 'my_choice.html';
  fs.readFile(file2, function(err, txt) {
 		if(err) { return console.log(err); }
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(txt);
+		res.send(txt);
 	});
 });
 app.post('/', function (req, res) {
  var file3 = 'index.html';
  fs.readFile(file3, function(err, txt) {
 		if(err) { return console.log(err); }
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(txt);
+		res.send(txt);
 	});
 });
 app.post('/menu.html', function (req, res) {
  var file4 = 'menu.html';
  fs.readFile(file4, function(err, txt) {
 		if(err) { return console.log(err); }
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(txt);
+		res.send(txt);
 	});
 });
 app.post('/about.html', function (req, res) {
  var file4 = 'about.html';
  fs.readFile(file4, function(err, txt) {
 		if(err) { return console.log(err); }
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(txt);
+		res.send(txt);
 	});
 });

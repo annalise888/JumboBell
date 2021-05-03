@@ -143,5 +143,12 @@ app.get('/menu.html', function (req, res) {
     });
 });
 
+
+app.post('/menu.html/process', function (req, res) {
+	res.write("yep!!!");
+
+});
+
+
 app.listen(port, function() {console.log("server started successfully");});
 

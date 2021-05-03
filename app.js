@@ -45,12 +45,12 @@ app.post('/login.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var name = String(pdata['fullname']);
+	res.write("Name: ");
+	res.write(name);
 	var Email = String(pdata['email']);
-	  file = 'index.html';
-	  fs.readFile(file, function(err, txt) {
-	      if(err) { return console.log(err); }
-	      res.write(txt);
-	    });
+	res.write(" Email: ");
+	res.write(Email);
+	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
 

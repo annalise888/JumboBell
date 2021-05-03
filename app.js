@@ -154,7 +154,7 @@ app.get('/menu.html', function (req, res) {
 app.get('/menu.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	res.write("yep!!!");
-
+	setTimeout(function(){res.end();}, 2000);
 });
 
 

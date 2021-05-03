@@ -7,31 +7,6 @@ const urll = process.env.MONGODB_URLL;
 const url2 = "mongodb+srv://annalisejacobson:annalise@cluster0.0y4mi.mongodb.net/tuftsdining?retryWrites=true&w=majority";
 var app = express();
 app.use(express.static("public"));
-
-function getFood(foodName, coll) {
-    var query = {food:{$regex : ".*" + foodName + ".*"}}
-    
-    var sendstring = "";
-    coll.find(query).toArray(function(err,items) {
-        if (err) {
-           console.log("Error: " + err);
-        } else if (items.length == 0) {
-            sendstring = "No food being served with that name.";
-        } else {
-            for (i=0; i < items.length; i++) {
-                //console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
-                sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-                //console.log(sendstring);
-            }
-        }
-        
-        return sendstring;
-//         sendmail(sendstring)
-
-    })
-    
-};
-
 var file;
 app.get('/', function (req, res) {
   file = 'index.html';
@@ -120,7 +95,26 @@ app.post('/my_choice.html/process', function (req, res) {
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");
 
-			res.write(getFood(pdata['foodname'],coll));
+			var query = {food:{$regex : ".*" + foodName + ".*"}}
+
+			    var sendstring = "";
+			    coll.find(query).toArray(function(err,items) {
+				if (err) {
+				   console.log("Error: " + err);
+				} else if (items.length == 0) {
+				    sendstring = "No food being served with that name.";
+				} else {
+				    for (i=0; i < items.length; i++) {
+					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
+					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
+					//console.log(sendstring);
+				    }
+				}
+
+				res.write(sendstring);
+			//         sendmail(sendstring)
+
+			    })
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 		});

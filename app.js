@@ -24,7 +24,7 @@ if(req.url == "/my_choice.html"){
 		res.write(txt);
 	});
 }
-else 
+else if (req.url == "/process")
 {
 	console.log("Process the form");
 	res.write("here1");
@@ -72,8 +72,8 @@ else
 		});  
 	}
 		if (req.url == "my_choice.html/process"){
+		res.write("here1");
 		res.writeHead(200, {'Content-Type':'text/html'});
-		res.write("here3");
 		MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 			if (err) {
 				return console.log("err");

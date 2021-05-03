@@ -24,11 +24,10 @@ if(req.url == "/my_choice.html"){
 		res.write(txt);
 	});
 }
-if (req.url == "/process")
+else
 {
 	res.writeHead(200, {'Content-Type':'text/html'})
 	console.log("Process the form");
-	res.write("here1");
 	pdata = "";
 	req.on('data', data => {
            pdata += data.toString();
@@ -38,11 +37,11 @@ if (req.url == "/process")
 	if (req.url == "login.html/process"){
 		console.log("here2");
 		var name = String(pdata['fullname']);
-		console.log("name: ");
-		console.log(name);
+		res.write("name: ");
+		res.write(name);
 		var Email = String(pdata['email']);
-		console.log(" email: ");
-		console.log(Email);
+		res.write(" email: ");
+		res.write(Email);
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
 

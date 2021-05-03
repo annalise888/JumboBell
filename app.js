@@ -1,5 +1,3 @@
-var http = require('http');
-var fs = require('fs');
 var qs = require('querystring');
 var port = process.env.PORT || 3000;
 const { MongoClient } = require("mongodb");
@@ -27,6 +25,7 @@ if(req.url == "/my_choice.html"){
 else 
 {
 	console.log("Process the form");
+	res.write("here1");
 	pdata = "";
 	req.on('data', data => {
            pdata += data.toString();
@@ -34,6 +33,7 @@ else
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
 	if (req.url == "login.html/process"){
+		res.write("here2");
 		res.writeHead(200, {'Content-Type':'text/html'})
 		var name = String(pdata['fullname']);
 		res.write("name: ");
@@ -71,6 +71,7 @@ else
 	}
 		if (req.url == "my_choice.html/process"){
 		res.writeHead(200, {'Content-Type':'text/html'});
+		res.write("here3");
 		MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 			if (err) {
 				return console.log("err");

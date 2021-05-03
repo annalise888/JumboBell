@@ -12,3 +12,4 @@ app.use(express.static("public"));
 app.get('/', function (req, res) {
 res.send("hello world");
 });
+app.listen(port, function() {console.log("server started successfully");});

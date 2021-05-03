@@ -80,6 +80,32 @@ app.get('/my_choice.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+app.post('/my_choice.html/process', function (req, res) {
+  res.writeHead(200, {'Content-Type':'text/html'});
+	console.log("Process the form");
+	pdata = "";
+	req.on('data', data => {
+           pdata += data.toString();
+    });
+  req.on('end', () => {
+	pdata = qs.parse(pdata);
+			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+
+			getFood(pdata['foodname'],coll);
+
+			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+		});
+
+			setTimeout(function(){db.close;}, 2000);
+			console.log("Success!");
+
+		});  
+});
 app.get('/about.html', function (req, res) {
   file = 'about.html';
   fs.readFile(file, function(err, txt) {

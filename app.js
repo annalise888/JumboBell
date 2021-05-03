@@ -17,6 +17,15 @@ app.get('/', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+app.get('/index.html', function (req, res) {
+  file = 'index.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
+});
 app.get('/login.html', function (req, res) {
   file = 'login.html';
   fs.readFile(file, function(err, txt) {

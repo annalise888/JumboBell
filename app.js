@@ -16,7 +16,8 @@ if (req.url == "/login.html")
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(txt);
 	});
-	if(req.url == "login.html/process"){
+}
+else if(req.url == "/process"){
 		res.writeHead(200, {'Content-Type':'text/html'})
 		console.log("Process the form");
 		pdata = "";
@@ -61,14 +62,15 @@ if (req.url == "/login.html")
 		});
 
 	}
-}
-	if(req.url == "/my_choice.html"){
+if(req.url == "/my_choice.html"){
 		file2 = 'my_choice.html';
 		fs.readFile(file2, function(err, txt) {
 			if(err) {return console.log(err); }
 			res.write(txt);
 		});
-			if (req.url == "my_choice.html/process"){
+
+}
+else if (req.url == "/process"){
 			res.writeHead(200, {'Content-Type':'text/html'})
 			console.log("Process the form");
 			pdata = "";
@@ -89,9 +91,7 @@ if (req.url == "/login.html")
 					setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 				});
 			});
-			}
-
-		}
+}
 setTimeout(function(){res.end();}, 3000);
 }).listen(port);
 

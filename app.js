@@ -37,7 +37,7 @@ app.get('/home.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.post('/index.html/process', function (req, res) {
+app.get('/index.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
 	pdata = "";

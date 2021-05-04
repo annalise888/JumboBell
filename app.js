@@ -44,7 +44,8 @@ app.post('/index.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	res.write("User signed in successfullY!");
+	res.write("User signed in successfully!");
+	res.write("Redirecting to home page...");
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
@@ -67,11 +68,11 @@ app.post('/index.html/process', function (req, res) {
 					});
 				} 
 
-				});
-			res.write("Redirecting to home page...");
-
+		});
+			
 			setTimeout(function(){db.close;}, 2000);
-			res.redirect('https://jumbo-bell.herokuapp.com/index.html/process');
+
+			res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 
 			console.log("Success!");
 
@@ -158,11 +159,11 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	//const queryObject = url.parse(req.url,true).query;
 	
   	res.write(req.url);
-	//var myurl = req.url;
-	//myurl = myurl.split("foodname=");
-	//myurl = myurl[1];
+	var myurl = req.url;
+	myurl = myurl.split("foodname=");
+	myurl = myurl[1];
   	//res.write(<br>);
-	//res.write(myurl);
+	res.write(myurl);
 
 
 	

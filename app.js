@@ -129,6 +129,100 @@ app.get('/menu.html/breakfast',function(req,res) {
 	});
 	
 });
+app.get('/menu.html/lunch',function (req,res) {
+	file = 'my_choice.html';
+	fs.readFile(file, function(err, txt) {
+	      if(err) { return console.log(err); }
+	      res.writeHead(200, {'Content-Type': 'text/html'});
+	      res.write(txt);	  
+	  
+		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+
+			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
+			  var luncharr = [];
+			  coll.find({meal:"Lunch"}).toArray(function(err,items) {
+				  if(err) {
+					  console.log("Error: " + err);
+				  } else {
+					  var lunch = "";
+					  lunch += ("<div id='lunch' style='width:30%;'>");
+					  lunch += ("<h1>Lunch</h1>");
+					  for (i=0; i<items.length; i++) {
+						  //check if repeated value
+						  var repeatedvalue = false;
+						  for (j=0;j<luncharr.length;j++) {
+							  if (items[i].food == luncharr[j]) {
+								  repeatedvalue = true;
+								  break;
+							  }
+						  }
+						  if (!repeatedvalue) {
+							  lunch += ("<input type='checkbox' name='lunch" + i + "'>" + items[i].food + "</input>" + "<br>");
+						  }
+						  luncharr.push(items[i].food);
+
+					  }
+					  lunch += ("</div>");
+					  res.write(lunch);
+					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
+					  res.write("</form>");
+				  }
+			  });
+		  });
+	});
+});
+app.get('/menu.html/dinner',function (req,res) {
+	file = 'my_choice.html';
+	fs.readFile(file, function(err, txt) {
+	      if(err) { return console.log(err); }
+	      res.writeHead(200, {'Content-Type': 'text/html'});
+	      res.write(txt);	  
+	  
+		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+
+			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
+			  var dinnerarr = [];
+			  coll.find({meal:"Dinner"}).toArray(function(err,items) {
+				  if(err) {
+					  console.log("Error: " + err);
+				  } else {
+					  var dinner = "";
+					  dinner += ("<div id='dinner' style='width:30%;'>");
+					  dinner += ("<h1>Dinner</h1>");
+					  for (i=0; i<items.length; i++) {
+						  //check if repeated value
+						  var repeatedvalue = false;
+						  for (j=0;j<dinnerarr.length;j++) {
+							  if (items[i].food == dinnerarr[j]) {
+								  repeatedvalue = true;
+								  break;
+							  }
+						  }
+						  if (!repeatedvalue) {
+							  dinner += ("<input type='checkbox' name='dinner" + i + "'>" + items[i].food + "</input>" + "<br>");
+						  }
+						  dinnerarr.push(items[i].food);
+
+					  }
+					  dinner += ("</div>");
+					  res.write(dinner);
+					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
+					  res.write("</form>");
+				  }
+			  });
+		  });
+	});
+});
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
   fs.readFile(file, function(err, txt) {
@@ -275,7 +369,7 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var x = String(pdata["hidden"]);
+	var x = pdata["hidden"];
 	res.write("processing");
 	res.write(x);
 	setTimeout(function(){res.end();}, 2000);

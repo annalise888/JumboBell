@@ -1,4 +1,5 @@
 var express = require("express");
+var jade     = require('jade');
 var http     = require("http");
 var fs = require('fs');
 var qs = require('querystring');
@@ -50,7 +51,6 @@ app.get('/index.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
-	var name = pdata["fullname"];
 	res.write("User signed in successfully! ");
 	res.write("Redirecting to home page...");
 	
@@ -64,7 +64,6 @@ app.get('/index.html/process', function (req, res) {
 				collection.find(theQuery).toArray(function(err, items) {
 					  if (err) {
 						console.log("Error: '" + err+"'}");
-						 return;
 					  } 
 					  else if(items.length == 0){
 						  var newData = {"fullname": name, "email": Email,"foods":[]};
@@ -83,7 +82,7 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-return res.redirect('https://jumbo-bell.herokuapp.com/home.html');
+res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 });
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
@@ -91,6 +90,39 @@ app.get('/my_choice.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
+	  
+	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+		  	
+			    coll.find().toArray(function(err,items) {
+				if (err) {
+				   console.log("Error: " + err);
+				} else {
+					res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
+				    for (i=0; i < items.length; i++) {
+					    
+					    
+					    res.write("<input type='radio'>" + items[i].food + "</input>");
+					    
+					    
+					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
+// 					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
+					//console.log(sendstring);
+				    }
+					res.write("</form>");
+				}
+
+				res.write(sendstring);
+			//         sendmail(sendstring)
+
+			    })
+
+			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+		});
       setTimeout(function(){res.end();}, 2000);
     });
 });

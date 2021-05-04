@@ -85,10 +85,7 @@ app.get('/my_choice.html', function (req, res) {
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-	  
-// 	  document.getElementById("bfast").innerHTML = "breakfast";
-	  
+      res.write(txt);	  
 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 		if (err) {
 			return console.log("err");
@@ -114,7 +111,7 @@ app.get('/my_choice.html', function (req, res) {
 		  });
 		  
 		  //Lunch
-		  coll.find({meal:"lunch"}).toArray(function(err,items) {
+		  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
@@ -129,7 +126,7 @@ app.get('/my_choice.html', function (req, res) {
 			  }
 		  });
 		  //Dinner
-		  coll.find({meal:"dinner"}).toArray(function(err,items) {
+		  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {

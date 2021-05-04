@@ -444,12 +444,17 @@
         
                   <form action = "https://jumbo-bell.herokuapp.com/menu.html/process" method = "GET">
 <!-- 			  this part has been changed -->
-           <button onclick="myFunction1()">breakfast</button>
-	   <div id="myDIV">
-  This is my DIV element.
-	   </div>
+           <button onclick="toggle1()">breakfast</button>
+	   <table id="myDIV">
+		  <tr>
+		    <th>Dining Hall</th>
+		    <th>Meal</th>
+		    <th>Food</th>
+		    <th>By #date</th>
+		  </tr>
+	   </table>
 	  <script language="javascript">
-      function myFunction1() {
+      function toggle1() {
   var x = document.getElementById("myDIV");
   if (x.style.display === "none") {
     x.style.display = "block";

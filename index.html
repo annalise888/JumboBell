@@ -1,3 +1,5 @@
+//this is the sign in page
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -73,16 +75,6 @@
 	      
       
       }
-    </script>
-	<a href="#" onclick="signOut();">Sign out</a>
-	<script>
-	  function signOut() {
-		var auth2 = gapi.auth2.getAuthInstance();
-		auth2.signOut().then(function () {
-		  console.log('User signed out.');
-		});
-	  }
-	</script>
   <footer class="footer bg-light py-3 mb-auto" id="footer">
   <div class="footer-container">
       <span class="text-muted">&copy; JumboBell 2021</span>

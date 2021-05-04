@@ -32,16 +32,7 @@ app.get('/index.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/home.html', function (req, res) {
-  file = 'home.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
-    });
-});
-app.get('/index.html/process', function (req, res) {
+app.get('/index.html/process', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -77,13 +68,18 @@ app.get('/index.html/process', function (req, res) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
-	setTimeout(function(){
-	res.writeHead(200, {'Content-Type':'text/html'});
-	return res.redirect("/home.html");
-	}, 2000);
+	  next();
 });
 });
-
+app.get('/home.html', function (req, res) {
+  file = 'home.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
+});
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
   fs.readFile(file, function(err, txt) {

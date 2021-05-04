@@ -76,6 +76,7 @@ app.get('/index.html/process', function (req, res) {
 		});  
 	  	res.end();
 	      	res.writeHead(200, {'Content-Type': 'text/html'});
+	  	res.write("redirect here");
 	  	res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 	  	res.end();
 

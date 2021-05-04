@@ -69,7 +69,6 @@ app.post('/index.html/process', function (req, res, next) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		}); 
-	   setTimeout(function(){res.end();}, 2000);
 	 app.get('/home.html', function (req, res) {
 	  file = 'home.html';
 	  fs.readFile(file, function(err, txt) {
@@ -78,6 +77,7 @@ app.post('/index.html/process', function (req, res, next) {
 	      res.write(txt);
 	      setTimeout(function(){res.end();}, 2000);
 	    });
+	setTimeout(function(){res.end();}, 2000);
 });
 });
 });

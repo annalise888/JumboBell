@@ -124,6 +124,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 				  }
 			  });
 		  });
+		));
 	
 });
 app.get('/my_choice.html', function (req, res) {

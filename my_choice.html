@@ -78,11 +78,11 @@
 			 var cookiemail = decodedCookie.split(";");
 			 cookiemail = cookiemail[1];
              		  document.write("<br>");
-			  document.write(cookiemail);
+			  document.write("semi decoded cookie" + cookiemail);
 			     
 			    document.write("<br>");
 	
-			   cookiemail = cookiemail.split("email=");
+			   cookiemail = cookiemail.split("=");
 			   cookiemail = cookiemail[1];
 			    document.write("should just be email: " + cookiemail);
 

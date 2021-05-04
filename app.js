@@ -268,7 +268,7 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 
     function getusersfoods(useremail) {
         
-        useremail = "cpekowsky@gmail.com";
+       // useremail = "cpekowsky@gmail.com";
         
         MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
             

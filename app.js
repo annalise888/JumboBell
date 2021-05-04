@@ -217,7 +217,8 @@ app.post('/my_choice.html/process', function (req, res) {
 	pdata = qs.parse(pdata);
 	res.write("processing");
 	  
-	  var bfast = pdata["bfast"];
+	var bfast = pdata["bfast1"];
+	  res.write(bfast);
 	  
 	  
 	  

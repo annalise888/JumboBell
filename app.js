@@ -93,6 +93,8 @@ app.get('/my_choice.html', function (req, res) {
 		var dbo = db.db("tuftsdining");
 		var coll = dbo.collection("menu");
 		  
+		  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
+		  
 	
 		//Breakfast
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
@@ -140,6 +142,8 @@ app.get('/my_choice.html', function (req, res) {
 				  res.write(dinner);
 			  }
 		  });
+		  res.write("<input type='submit'/>");
+		  res.write("</form>");
 		  
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);

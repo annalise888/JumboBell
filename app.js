@@ -202,15 +202,15 @@ app.get('/about.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/menu.html', function (req, res) {
-  file = 'menu.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
-    });
-});
+//app.get('/menu.html', function (req, res) {
+ // file = 'menu.html';
+ // fs.readFile(file, function(err, txt) {
+  //    if(err) { return console.log(err); }
+  //    res.writeHead(200, {'Content-Type': 'text/html'});
+   //   res.write(txt);
+   //   setTimeout(function(){res.end();}, 2000);
+   // });
+//});
 
 //code to get all of current users favorite foods being served 
 app.get('/my_choice.html/finduserfoods', function (req, res) {
@@ -446,10 +446,13 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 
 });
 
-app.get('/menu.html/process', function (req, res) {
-	res.writeHead(200, {'Content-Type':'text/html'});
-	
-	//actual code for connecting to the database and printing all menus 
+app.get('/menu.html', function (req, res) {
+	file = 'menu.html';
+	  fs.readFile(file, function(err, txt) {
+	      if(err) { return console.log(err); }
+	      res.writeHead(200, {'Content-Type': 'text/html'});
+	      res.write(txt);
+	    });
 	
 	    //actual mongo query 
     MongoClient.connect(url2, { useUnifiedTopology: true }, function(err, db) {

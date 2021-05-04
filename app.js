@@ -123,9 +123,12 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  res.write(bfast);
 					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
 					  res.write("</form>");
+					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
+			  
 		  });
+		setTimeout(function(){db.close;}, 2000);
 	});
 	
 });
@@ -171,9 +174,11 @@ app.get('/menu.html/lunch',function (req,res) {
 					  res.write(lunch);
 					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
 					  res.write("</form>");
+					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
 		  });
+		setTimeout(function(){db.close;}, 2000);
 	});
 });
 app.get('/menu.html/dinner',function (req,res) {
@@ -218,9 +223,11 @@ app.get('/menu.html/dinner',function (req,res) {
 					  res.write(dinner);
 					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
 					  res.write("</form>");
+					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
 		  });
+		setTimeout(function(){db.close;}, 2000);
 	});
 });
 app.get('/my_choice.html', function (req, res) {

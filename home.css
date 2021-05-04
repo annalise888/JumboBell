@@ -38,7 +38,15 @@ body{
 }
 
 
-
+.aboutus{
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 /* btn design credits to David Conner at CodePen https://codepen.io/davidicus/pen/emgQKJ */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 .btn-1 {

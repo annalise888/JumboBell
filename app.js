@@ -164,6 +164,9 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 	
 	stringURL = stringURL.split("=");
 	stringURL = stringURL[1];
+	
+	stringURL  = (decodeURIComponent(stringURL));
+
 	res.write("important bit: " + stringURL );
 
 

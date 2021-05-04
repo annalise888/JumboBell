@@ -4,6 +4,7 @@ var http     = require("http");
 var fs = require('fs');
 var qs = require('querystring');
 var port = process.env.PORT || 3000;
+const $ = require('cheerio').load(inputHtml);
 const { MongoClient } = require("mongodb");
 const urll = process.env.MONGODB_URLL;
 const url2 = "mongodb+srv://annalisejacobson:annalise@cluster0.0y4mi.mongodb.net/tuftsdining?retryWrites=true&w=majority";
@@ -96,44 +97,49 @@ app.get('/my_choice.html', function (req, res) {
 		}
 		var dbo = db.db("tuftsdining");
 		var coll = dbo.collection("menu");
+		  
+		  res.write("<form method='post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
 	
 		//Breakfast
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  var bfast = "";
+				  res.write("<div id='bfast'>");
+				  res.write("<h1>Breakfast</h1>");
 				  for (i=0; i<items.length; i++) {
-					  bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					 res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  document.getElementById("bfast").innerHTML = bfast;
+				  res.write("</div>");
 			  }
 		  });
 		  
-// 		  //Lunch
-// 		  coll.find({meal:"lunch"}).toArray(function(err,items) {
-// 			  if(err) {
-// 				  console.log("Error: " + err);
-// 			  } else {
-// 				  var lunch = "";
-// 				  for (i=0; i<items.length; i++) {
-// 					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-// 				  }
-// 				  document.getElementById("lunch").innerHTML = lunch;
-// 			  }
-// 		  });
-// 		  //Dinner
-// 		  coll.find({meal:"dinner"}).toArray(function(err,items) {
-// 			  if(err) {
-// 				  console.log("Error: " + err);
-// 			  } else {
-// 				  var dinner = "";
-// 				  for (i=0; i<items.length; i++) {
-// 					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-// 				  }
-// 				  document.getElementById("lunch").innerHTML = lunch;
-// 			  }
-// 		  });
+		  //Lunch
+		  coll.find({meal:"lunch"}).toArray(function(err,items) {
+			  if(err) {
+				  console.log("Error: " + err);
+			  } else {
+				  res.write("<div id='lunch'>");
+				  res.write("<h1>Lunch</h1>");
+				  for (i=0; i<items.length; i++) {
+					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+				  }
+				  res.write("</div>");
+			  }
+		  });
+		  //Dinner
+		  coll.find({meal:"dinner"}).toArray(function(err,items) {
+			  if(err) {
+				  console.log("Error: " + err);
+			  } else {
+				  res.write("<div id='dinner'>");
+				  res.write("<h1>Dinner</h1>");
+				  for (i=0; i<items.length; i++) {
+					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+				  }
+				  res.write("</div>");
+			  }
+		  });
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 

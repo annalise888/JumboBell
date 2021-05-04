@@ -165,15 +165,12 @@ app.get('/my_choice.html', function (req, res) {
 				  res.write(dinner);
 			  }
 		  });
+		  
+		  
  		  res.write("<input type='submit'/>");
  		  res.write("</form>");
 		  
-		  
-		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
-
-		});
-      setTimeout(function(){res.end();}, 2000);
-	  function repeatedValue(arr,item) {
+		  function repeatedValue(arr,item) {
 		  for (i=0;i<arr.length;i++) {
 			  if (item == arr[i]) {
 				  return true;
@@ -181,6 +178,13 @@ app.get('/my_choice.html', function (req, res) {
 		  }
 		  return false;
 	  }
+		  
+		  
+		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+
+		});
+      setTimeout(function(){res.end();}, 2000);
+	  
     });
 });
 app.post('/my_choice.html/process', function (req, res) {

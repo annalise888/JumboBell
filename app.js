@@ -74,7 +74,7 @@ app.get('/index.html/process', function (req, res) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
-	  	res.redirect('https://jumbo-bell.herokuapp.com/home.html');
+	  	return res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 
 });
 });
@@ -148,6 +148,17 @@ app.get('/menu.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+
+//code to get all of current users favorite foods being served 
+app.get('/my_choice.html/finduserfoods', function (req, res) {
+	res.writeHead(200, {'Content-Type':'text/html'});
+	
+	res.write("Hello");
+
+	setTimeout(function(){res.end();}, 2000);
+
+});
+
 
 //code to add a food to the users favorites 
 app.get('/my_choice.html/userprocess', function (req, res) {

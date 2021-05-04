@@ -33,6 +33,7 @@ app.get('/index.html', function (req, res, next) {
     });
 });
 app.post('/index.html/process', function (req, res, next) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -67,6 +68,7 @@ app.post('/index.html/process', function (req, res, next) {
 		});
 			
 			setTimeout(function(){db.close;}, 2000);
+			setTimeout(function(){res.end();}, 2000);
 		});  
 });
 });
@@ -107,6 +109,7 @@ app.get('/my_choice.html', function (req, res) {
 			    })
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+
 		});
       setTimeout(function(){res.end();}, 2000);
     });

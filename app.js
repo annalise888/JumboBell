@@ -157,8 +157,9 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	
 	res.write("Hello");
 	
-	const queryObject = url.parse(req.url,true).query;
-  	res.write(queryObject);
+	//const queryObject = url.parse(req.url,true).query;
+	
+  	res.write(req.url);
 
 
 	

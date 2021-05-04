@@ -104,7 +104,7 @@ app.get('/my_choice.html', function (req, res) {
 				  for (i=0; i<items.length; i++) {
 					  bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  document.getElementById("bfast").innerHTML += bfast;
+				  document.getElementById("bfast").innerHTML = bfast;
 			  }
 		  });
 		  
@@ -117,7 +117,7 @@ app.get('/my_choice.html', function (req, res) {
 				  for (i=0; i<items.length; i++) {
 					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  document.getElementById("lunch").innerHTML += lunch;
+				  document.getElementById("lunch").innerHTML = lunch;
 			  }
 		  });
 		  //Dinner
@@ -129,7 +129,7 @@ app.get('/my_choice.html', function (req, res) {
 				  for (i=0; i<items.length; i++) {
 					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  document.getElementById("lunch").innerHTML += lunch;
+				  document.getElementById("lunch").innerHTML = lunch;
 			  }
 		  });
 		  

@@ -152,7 +152,6 @@ app.post('/my_choice.html/process', function (req, res) {
 	pdata = qs.parse(pdata);
 	  res.write("processing");
 	  setTimeout(function(){res.end();}, 2000);
-	  
 // 	var Email = String(pdata["email"]);
 // 	var name = String(pdata["fullname"]);
 // 			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {

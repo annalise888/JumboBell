@@ -219,7 +219,6 @@ app.post('/my_choice.html/process', function (req, res) {
 	  
 	  var bfast = pdata["bfast"];
 	  
-	  res.write(bfast);
 	  
 	  
 	  

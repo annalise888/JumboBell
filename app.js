@@ -95,9 +95,11 @@ app.get('/my_choice.html', function (req, res) {
 		var coll = dbo.collection("menu");
 		  
  		  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
+		  res.write("<table>");
 		  
-	
+		
 		//Breakfast
+		  res.write("<tr><td>");
 		  var bfastarr = [];
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
@@ -124,9 +126,11 @@ app.get('/my_choice.html', function (req, res) {
 				  bfast += ("</div>");
 				  res.write(bfast);
 			  }
+			  res.write("</td>");
 		  });
 		  
 		  //Lunch
+		  res.write("<td>");
 		  var luncharr = [];
 		  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 			  if(err) {
@@ -154,8 +158,10 @@ app.get('/my_choice.html', function (req, res) {
 				  lunch += ("</div>");
 				  res.write(lunch);
 			  }
+			  res.write("</td>");
 		  });
 		  //Dinner
+		  res.write("<td>");
 		  var dinnerarr = [];
 		  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 			  if(err) {
@@ -183,9 +189,10 @@ app.get('/my_choice.html', function (req, res) {
 				  dinner += ("</div>");
 				  res.write(dinner);
 			  }
+			  res.write("</td></tr>");
 		  });
 		  
-		  
+		  res.write("</table>");
  		  res.write("<input type='submit'/>");
  		  res.write("</form>");
 		  

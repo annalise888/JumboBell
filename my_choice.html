@@ -77,12 +77,19 @@
               		 document.write(decodedCookie);
 	
              		  document.write("<br>");
+			     
+			 decodedCookie = decodedCookie.split('; email=');
+
+              		 decodedCookie = decodedCookie[1];
                
+               		document.write(decodedCookie);
+
+               		document.getElementById('email').value = decodedCookie;
+
           		 }
            
            	getCookie();	 
 			      
-		document.getElementById('email').value = "cpekowsky@gmail.com";
 
 		      
 		     </script>

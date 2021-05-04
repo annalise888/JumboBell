@@ -82,7 +82,8 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-	res.render("home");
+	res.redirect("/home.html");
+	return;
 });
 
 app.get('/my_choice.html', function (req, res) {

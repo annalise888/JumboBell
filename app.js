@@ -118,7 +118,7 @@ app.get('/my_choice.html', function (req, res) {
 						  }
 					  }
 					  if (!repeatedvalue) {
-						  bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						  bfast += ("<input type='checkbox' id='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
 					  }
 					  bfastarr.push(items[i].food);
 					 
@@ -150,7 +150,7 @@ app.get('/my_choice.html', function (req, res) {
 						  }
 					  }
 					  if (!repeatedvalue) {
-						  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						  lunch += ("<input type='checkbox' id='lunch" + i + "'>" + items[i].food + "</input>" + "<br>");
 					  }
 					  luncharr.push(items[i].food);
 					 
@@ -181,7 +181,7 @@ app.get('/my_choice.html', function (req, res) {
 						  }
 					  }
 					  if (!repeatedvalue) {
-						  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						  dinner += ("<input type='checkbox' id='dinner" + i + "'>" + items[i].food + "</input>" + "<br>");
 					  }
 					  dinnerarr.push(items[i].food);
 					 
@@ -215,42 +215,17 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	  res.write("processing");
-	  setTimeout(function(){res.end();}, 2000);
-// 	var Email = String(pdata["email"]);
-// 	var name = String(pdata["fullname"]);
-// 			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-// 			if (err) {
-// 				return console.log("err");
-// 			}
-// 			var dbo = db.db("tuftsdining");
-// 			var coll = dbo.collection("menu");
+	res.write("processing");
+	  
+	  var bfast = pdata["bfast"];
+	  
+	  res.write(bfast);
+	  
+	  
+	  
+	setTimeout(function(){res.end();}, 2000);
 
-// 			var query = {food:{$regex : ".*" + pdata['foodname'] + ".*"}}
-
-// 			    var sendstring = "";
-// 			    coll.find(query).toArray(function(err,items) {
-// 				if (err) {
-// 				   console.log("Error: " + err);
-// 				} else if (items.length == 0) {
-// 				    sendstring = "No food being served with that name.";
-// 				} else {
-// 				    for (i=0; i < items.length; i++) {
-// 					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
-// 					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-// 					//console.log(sendstring);
-// 				    }
-// 				}
-
-// 				res.write(sendstring);
-
-// 			    })
-
-// 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
-// 		});
-			console.log("Success!");
-
-		});  
+});  
 });
 app.get('/about.html', function (req, res) {
   file = 'about.html';

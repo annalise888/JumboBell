@@ -159,10 +159,11 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	
   	res.write(req.url);
 	var myurl = req.url;
+	myurl = toString(myurl);
 	//myurl = myurl.split("foodname=");
 	//myurl = myurl[1];
   	//res.write(<br>);
-	//res.write(myurl);
+	res.write(myurl);
 
 
 	

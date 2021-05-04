@@ -51,8 +51,6 @@ app.get('/index.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
-	res.write("User signed in successfully! ");
-	res.write("Redirecting to home page...");
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");

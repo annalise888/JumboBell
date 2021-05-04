@@ -5,6 +5,8 @@ var port = process.env.PORT || 3000;
 const { MongoClient } = require("mongodb");
 const urll = process.env.MONGODB_URLL;
 const url2 = "mongodb+srv://annalisejacobson:annalise@cluster0.0y4mi.mongodb.net/tuftsdining?retryWrites=true&w=majority";
+const userurl = 'mongodb+srv://unellu01:aaa@cluster0.trnuo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
 var app = express();
 app.use(express.static("public"));
 var file;
@@ -163,6 +165,79 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	stringURL = stringURL.split("=");
 	stringURL = stringURL[1];
 	res.write(stringURL );
+	
+	 MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
+		 
+        currfood = stringURL;
+        useremail = "cpekowsky@gmail.com";
+
+            
+            
+            if (err) {
+                console.log("Connection err: " + err);
+            }
+            var dbo = db.db("users");
+            var coll = dbo.collection('profiles');
+            //var coll = dbo.collection("profile2");
+            
+            var myquery = { email: useremail };
+            
+            var newvalues = { $push: {foods: currfood } };
+            coll.updateOne(myquery, newvalues, function(err, res) {
+              if (err) throw err;
+              console.log("1 document updated");
+             // db.close();
+            });
+
+            
+    
+        
+
+            
+            
+            coll.find( ).toArray(function(err, items) {
+                
+                  if (err) {
+                      res.write("Error: " + err);  
+                  } 
+                  
+                  if( items.length == 0 ) {
+                      res.write("no users.");
+                  }
+                  
+                  else   {
+                      for (i=0; i<items.length; i++) {
+                          res.write("name:" + items[i].email );
+                          res.write( "<br>" );
+
+                      }
+                  }
+                  
+                  db.close();
+                  
+            })
+            
+            
+            
+
+            /*
+            
+            collection.insertOne(newData2, function(err, res) {
+            if(err) { console.log("query err: " + err); return; }
+            console.log("new document inserted");
+
+            }   );
+            
+            
+            */
+
+
+
+
+            
+            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+        })
+
 
 
 	

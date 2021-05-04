@@ -37,16 +37,7 @@ body{
   transform: translate(-50%, -50%);
 }
 
-/* #footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  /* opacity: 0.5; */
-  text-align: center;
-} */
+
 
 /* btn design credits to David Conner at CodePen https://codepen.io/davidicus/pen/emgQKJ */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);

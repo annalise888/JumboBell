@@ -198,7 +198,7 @@ app.get('/my_choice.html', function (req, res) {
  		  res.write("</form>");
 		  
 		  res.write("<script>");
-		  res.write("if(document.getElementById('bfast') == true ){var check = "true"};");
+		  res.write("if(document.getElementById('bfast') == true ){var check = 'true'};");
 		  res.write("document.getElementById('hidden').innerHTML = check;");
 		  res.write("</script>">);
 	

@@ -79,15 +79,9 @@ app.get('/index.html/process', function (req, res) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
-	  	//res.end();
-	      	//res.writeHead(200, {'Content-Type': 'text/html'});
-	  	//res.write("redirect here");
-	  	//res.redirect('https://jumbo-bell.herokuapp.com/home.html');
-	    var context = req.dataProcessed;
-   	    res.render('home.jade', context);
-	  res.end();
 
 });
+res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 });
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';

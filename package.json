@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "jade":"0.17.0",
     "axios":"0.21.1",
+    "nodemailer":"6.6.0",
     "mongodb": "^3.6.0"
   },
   "keywords": [

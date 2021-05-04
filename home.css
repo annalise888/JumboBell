@@ -18,6 +18,7 @@ body{
 .welcome-container{
   text-align: center;
   color: white;
+  background-color:white;
   margin: 0;
   position: absolute;
   top: 50%;

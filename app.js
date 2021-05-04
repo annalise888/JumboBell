@@ -101,6 +101,7 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
+	var Email = String(pdata["email"]);
 			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 			if (err) {
 				return console.log("err");

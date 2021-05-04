@@ -86,6 +86,16 @@ app.get('/my_choice.html', function (req, res) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);	  
+	  
+	  function repeatedValue(arr,item) {
+		  for (i=0;i<arr.length;i++) {
+			  if (item == arr[i]) {
+				  return true;
+			  }
+		  }
+		  return false;
+	  }
+	  
 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 		if (err) {
 			return console.log("err");
@@ -170,14 +180,7 @@ app.get('/my_choice.html', function (req, res) {
  		  res.write("<input type='submit'/>");
  		  res.write("</form>");
 		  
-		  function repeatedValue(arr,item) {
-		  for (i=0;i<arr.length;i++) {
-			  if (item == arr[i]) {
-				  return true;
-			  }
-		  }
-		  return false;
-	  }
+	
 		  
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);

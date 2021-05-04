@@ -33,12 +33,6 @@
     </div>
   </nav>
     </div>
-        
-      <form method = "post" action = "https://jumbo-bell.herokuapp.com/my_choice.html/process" id = "foodlist">
-	      
-	      
-	      
-	  </form>
 	  
 <!--    <form method = "post" action = "https://jumbo-bell.herokuapp.com/my_choice.html/process">
 		Search for a food (e.g., "Mushroom"):
@@ -68,6 +62,18 @@
 		<input type = "submit" value = "Submit"/>
 	</form>
  -->
+	  <form method = "post" id="foodform" action = "https://jumbo-bell.herokuapp.com/my_choice.html/process">
+		  <div id="bfast">
+			  <h1>Breakfast</h1>
+		  </div>
+		  <div id="lunch">
+			  <h1>Lunch</h1>
+		  </div>
+		  <div id="dinner">
+			  <h1>Dinner</h1>
+		  </div>
+		  <input type="submit" value="Submit"/>
+	  </form>
 	  
 	  	      <script language = "javascript">
 		      //calebs code getting cookies
@@ -75,13 +81,8 @@
 		     function getCookie() {
               		 var decodedCookie = decodeURIComponent(document.cookie);               
               		 document.write(decodedCookie);
-			 var cookiemail = decodedCookie.split("; email=");
-			 cookiemail = cookiemail[1];
+	
              		  document.write("<br>");
-			  document.write("semi decoded cookie: "  + cookiemail);
-			     
-			    document.write("<br>");
-			     
                
           		 }
            
@@ -97,11 +98,11 @@
       
       
     
-     <div class="footer bg-light py-3 fixed-bottom">
-	    <div class="footer-container">
+    <footer class="footer bg-light py-3 mb-auto" id="footer">
+  <div class="footer-container">
       <span class="text-muted">&copy; JumboBell 2021</span>
     </div>
-	  </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script> 

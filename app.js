@@ -275,7 +275,7 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var x = pdata["hidden"];
+	var x = String(pdata["hidden"]);
 	res.write("processing");
 	res.write(x);
 	setTimeout(function(){res.end();}, 2000);

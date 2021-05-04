@@ -1,5 +1,6 @@
 var express = require("express");
-var html = require("html");
+var jade     = require('jade');
+var http     = require("http");
 var fs = require('fs');
 var qs = require('querystring');
 var port = process.env.PORT || 3000;
@@ -83,7 +84,7 @@ app.get('/index.html/process', function (req, res) {
 	  	//res.write("redirect here");
 	  	//res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 	    var context = req.dataProcessed;
-   	    res.render('home.html', context);
+   	    res.render('home.jade', context);
 	  res.end();
 
 });

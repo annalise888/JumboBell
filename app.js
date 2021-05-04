@@ -106,7 +106,7 @@ app.get('/my_choice.html', function (req, res) {
 				  console.log("Error: " + err);
 			  } else {
 				  var bfast = "";
-				  bfast += ("<div id='bfast'>");
+				  bfast += ("<div id='bfast' style='width:30%;'>");
 				  bfast += ("<h1>Breakfast</h1>");
 				  for (i=0; i<items.length; i++) {
 					  //check if repeated value
@@ -138,7 +138,7 @@ app.get('/my_choice.html', function (req, res) {
 			  } else {
 				  
 				  var lunch = "";
-				  lunch += ("<div id='lunch'>");
+				  lunch += ("<div id='lunch' style='width:30%;'>");
 				  lunch += ("<h1>Lunch</h1>");
 				  for (i=0; i<items.length; i++) {
 					  //check if repeated value
@@ -169,7 +169,7 @@ app.get('/my_choice.html', function (req, res) {
 			  } else {
 				  
 				  var dinner = "";
-				  dinner += ("<div id='dinner'>");
+				  dinner += ("<div id='dinner' style='width:30%;'>");
 				  dinner += ("<h1>Dinner</h1>");
 				  for (i=0; i<items.length; i++) {
 					  //check if repeated value

@@ -71,6 +71,7 @@ app.post('/index.html/process', function (req, res, next) {
 			setTimeout(function(){res.end();}, 2000);
 		});  
 });
+	next();
 });
 app.get('/home.html', function (req, res) {
   file = 'home.html';

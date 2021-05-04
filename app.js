@@ -51,7 +51,7 @@ app.get('/index.html/process', function (req, res) {
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
-		  if(err) { return console.log(err); }
+		  if(err) { return console.log("mongo err: " + err); }
 
 			var dbo = db.db("users");
 			var collection = dbo.collection('profiles');

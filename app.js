@@ -81,66 +81,66 @@ app.get('/home.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/my_choice.html', function (req, res) {
-  file = 'my_choice.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
+// app.get('/my_choice.html', function (req, res) {
+//   file = 'my_choice.html';
+//   fs.readFile(file, function(err, txt) {
+//       if(err) { return console.log(err); }
+//       res.writeHead(200, {'Content-Type': 'text/html'});
+//       res.write(txt);
 	  
-	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-		if (err) {
-			return console.log("err");
-		}
-		var dbo = db.db("tuftsdining");
-		var coll = dbo.collection("menu");
+// 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+// 		if (err) {
+// 			return console.log("err");
+// 		}
+// 		var dbo = db.db("tuftsdining");
+// 		var coll = dbo.collection("menu");
 		  
-		  //form of foods
-		  res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
+// 		  //form of foods
+// 		  res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
 	
-		//Breakfast
-		  coll.find(meal:"breakfast").toArray(function(err,items) {
-			  if(err) {
-				  console.log("Error: " + err);
-			  } else {
-				  res.write("<h1><div class='mealheaders'>Breakfast</div></h1>");
-				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				  }
-			  }
-		  });
+// 		//Breakfast
+// 		  coll.find(meal:"breakfast").toArray(function(err,items) {
+// 			  if(err) {
+// 				  console.log("Error: " + err);
+// 			  } else {
+// 				  res.write("<h1><div class='mealheaders'>Breakfast</div></h1>");
+// 				  for (i=0; i<items.length; i++) {
+// 					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+// 				  }
+// 			  }
+// 		  });
 		  
-		  //Lunch
-		  coll.find(meal:"lunch").toArray(function(err,items) {
-			  if(err) {
-				  console.log("Error: " + err);
-			  } else {
-				  res.write("<h1><div class='mealheaders'>Lunch</div></h1>");
-				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				  }
-			  }
-		  });
-		  //Dinner
-		  coll.find(meal:"dinner").toArray(function(err,items) {
-			  if(err) {
-				  console.log("Error: " + err);
-			  } else {
-				  res.write("<h1><div class='mealheaders'>Dinner</div></h1>");
-				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				  }
-			  }
-		  });
-		  res.write("<input type='submit' value='Submit'/>");
-		  res.write("</form>");
+// 		  //Lunch
+// 		  coll.find(meal:"lunch").toArray(function(err,items) {
+// 			  if(err) {
+// 				  console.log("Error: " + err);
+// 			  } else {
+// 				  res.write("<h1><div class='mealheaders'>Lunch</div></h1>");
+// 				  for (i=0; i<items.length; i++) {
+// 					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+// 				  }
+// 			  }
+// 		  });
+// 		  //Dinner
+// 		  coll.find(meal:"dinner").toArray(function(err,items) {
+// 			  if(err) {
+// 				  console.log("Error: " + err);
+// 			  } else {
+// 				  res.write("<h1><div class='mealheaders'>Dinner</div></h1>");
+// 				  for (i=0; i<items.length; i++) {
+// 					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+// 				  }
+// 			  }
+// 		  });
+// 		  res.write("<input type='submit' value='Submit'/>");
+// 		  res.write("</form>");
 		  
-		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+// 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 
-		});
-      setTimeout(function(){res.end();}, 2000);
-    });
-});
+// 		});
+//       setTimeout(function(){res.end();}, 2000);
+//     });
+// });
 app.post('/my_choice.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");

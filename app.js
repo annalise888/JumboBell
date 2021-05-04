@@ -216,13 +216,6 @@ app.post('/my_choice.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	res.write("processing");
-	  
-	var bfast = pdata["bfast1"];
-	  res.write(bfast);
-	  
-	  
-	  
-	  
 	setTimeout(function(){res.end();}, 2000);
 
 });  

@@ -109,7 +109,7 @@ app.get('/my_choice.html', function (req, res) {
 					 bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
 				  bfast += ("</div>");
-				  res.send(bfast);
+				  res.write(bfast);
 			  }
 		  });
 		  
@@ -125,7 +125,7 @@ app.get('/my_choice.html', function (req, res) {
 					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
 				  lunch += ("</div>");
-				  res.send(lunch);
+				  res.write(lunch);
 			  }
 		  });
 		  //Dinner
@@ -140,7 +140,7 @@ app.get('/my_choice.html', function (req, res) {
 					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
 				  dinner += ("</div>");
-				  res.send(dinner);
+				  res.write(dinner);
 			  }
 		  });
 		  

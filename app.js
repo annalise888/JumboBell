@@ -77,9 +77,10 @@ app.get('/index.html/process', function (req, res) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
+	setTimeout(function(){
 	res.writeHead(200, {'Content-Type':'text/html'});
 	return res.redirect("/home.html");
-	setTimeout(function(){res.end();}, 2000);
+	}, 2000);
 });
 });
 

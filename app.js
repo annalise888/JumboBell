@@ -74,7 +74,7 @@ app.get('/index.html/process', function (req, res) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
-	  	res.redirect('https://jumbo-bell.herokuapp.com/home.html');
+// 	  	res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 
 });
 });

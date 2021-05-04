@@ -156,6 +156,10 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	
 	res.write("Hello");
+	
+	const queryObject = url.parse(req.url,true).query;
+  	res.write(queryObject);
+
 
 	
 	

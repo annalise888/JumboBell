@@ -70,6 +70,7 @@ app.post('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		});  
 	  next();
+	  setTimeout(function(){res.end();}, 2000);
 });
 });
 app.get('/home.html', function (req, res) {

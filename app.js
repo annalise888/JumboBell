@@ -152,7 +152,7 @@ app.get('/menu.html', function (req, res) {
 });
 
 //code to add a food to the users favorites 
-app.get('/menu.html/userprocess', function (req, res) {
+app.get('/my_choice.html/userprocess', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	
 	res.write("Hello");

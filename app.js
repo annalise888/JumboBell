@@ -95,7 +95,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");
 
-			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process'>");
+			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
 			  var bfastarr = [];
 			  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 				  if(err) {

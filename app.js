@@ -193,9 +193,14 @@ app.get('/my_choice.html', function (req, res) {
 		  });
 		  
 		  res.write("</table>");
+		  res.write("<input type = 'hidden' id = 'checknum'>");
  		  res.write("<input type='submit'/>");
  		  res.write("</form>");
 		  
+		  res.write("<script>");
+		  res.write("if(document.getElementById('bfast') == true ){var check = "true"};");
+		  res.write("document.getElementById('hidden').innerHTML = check;");
+		  res.write("</script>">);
 	
 		  
 		  

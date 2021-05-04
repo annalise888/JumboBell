@@ -82,8 +82,9 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-	res.redirect("/home.html");
-	return;
+	res.writeHead(200, {'Content-Type':'text/html'});
+	return res.redirect("/home.html");
+	
 });
 
 app.get('/my_choice.html', function (req, res) {

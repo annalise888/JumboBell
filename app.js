@@ -51,32 +51,32 @@ app.get('/index.html/process', function (req, res) {
 	res.write("User signed in successfully! ");
 	res.write("Redirecting to home page...");
 	
-// 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
-// 		console.log("hello");
-// 		  if(err) { return console.log("mongo err: " + err); }
+		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
+		console.log("hello");
+		  if(err) { return console.log("mongo err: " + err); }
 
-// 			var dbo = db.db("users");
-// 			var collection = dbo.collection('profiles');
-// 			var theQuery = {email: Email} 
-// 				collection.find(theQuery).toArray(function(err, items) {
-// 					  if (err) {
-// 						console.log("Error: '" + err+"'}");
-// 					  } 
-// 					  else if(items.length == 0){
-// 						  var newData = {"fullname": name, "email": Email,"foods":[]};
-// 						  collection.insertOne(newData, function(err, res){
-// 							  if(err) { 
-// 								  console.log("query err: " + err); 
-// 								  return; 
-// 							}
-// 						  console.log("new document inserted");
-// 					});
-// 				} 
+			var dbo = db.db("users");
+			var collection = dbo.collection('profiles');
+			var theQuery = {email: Email} 
+				collection.find(theQuery).toArray(function(err, items) {
+					  if (err) {
+						console.log("Error: '" + err+"'}");
+					  } 
+					  else if(items.length == 0){
+						  var newData = {"fullname": name, "email": Email,"foods":[]};
+						  collection.insertOne(newData, function(err, res){
+							  if(err) { 
+								  console.log("query err: " + err); 
+								  return; 
+							}
+						  console.log("new document inserted");
+					});
+				} 
 
-// 		});
+		});
 			
-// 			setTimeout(function(){db.close;}, 2000);
-// 		});  
+			setTimeout(function(){db.close;}, 2000);
+		});  
 	  	res.end();
 	      	res.writeHead(200, {'Content-Type': 'text/html'});
 	  	res.write("redirect here");

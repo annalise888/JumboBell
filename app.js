@@ -65,6 +65,7 @@ app.get('/index.html/process', function (req, res) {
 				collection.find(theQuery).toArray(function(err, items) {
 					  if (err) {
 						console.log("Error: '" + err+"'}");
+						 return;
 					  } 
 					  else if(items.length == 0){
 						  var newData = {"fullname": name, "email": Email,"foods":[]};
@@ -83,7 +84,7 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-res.redirect('https://jumbo-bell.herokuapp.com/home.html');
+return res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 });
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';

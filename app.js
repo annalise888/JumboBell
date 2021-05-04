@@ -118,7 +118,7 @@ app.get('/my_choice.html', function (req, res) {
 						  }
 					  }
 					  if (!repeatedvalue) {
-						  bfast += ("<input type='checkbox' id='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
+						  bfast += ("<input type='checkbox' name='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
 					  }
 					  bfastarr.push(items[i].food);
 					 
@@ -198,7 +198,7 @@ app.get('/my_choice.html', function (req, res) {
  		  res.write("</form>");
 		  
 		  res.write("<script>");
-		  res.write("if(document.getElementById('bfast') == true ){var check = 'true'};");
+		  res.write("if(document.getElementsByName('bfast') == true ){var check = 'true'};");
 		  res.write("document.getElementById('hidden').innerHTML = check;");
 		  res.write("</script>");
 	

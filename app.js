@@ -82,7 +82,9 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-res.redirect('https://jumbo-bell.herokuapp.com/home.html');
+});
+app.get('/home.html', function(req, res) {
+        res.render('home.html');
 });
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';

@@ -82,9 +82,7 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-});
-app.get('/home.html', function(req, res) {
-        res.render('home.html');
+res.redirect('https://jumbo-bell.herokuapp.com/home.html');
 });
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
@@ -105,15 +103,8 @@ app.get('/my_choice.html', function (req, res) {
 				   console.log("Error: " + err);
 				} else {
 					res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
-				    for (i=0; i < items.length; i++) {
-					    
-					    
-					    res.write("<input type='radio'>" + items[i].food + "</input>");
-					    
-					    
-					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
-// 					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-					//console.log(sendstring);
+				    for (i=0; i < items.length; i++) {    
+					    res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				    }
 					res.write("</form>");
 				}

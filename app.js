@@ -156,8 +156,8 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	//const queryObject = url.parse(req.url,true).query;
 	
   	res.write(req.url);
-	res.write(" SHOUld get actual thing: ")
-	res.write(req.url.toString() );
+	//res.write(" SHOUld get actual thing: ")
+	//res.write(req.url.toString() );
 
 
 	

@@ -96,19 +96,19 @@ app.get('/my_choice.html', function (req, res) {
 		var dbo = db.db("tuftsdining");
 		var coll = dbo.collection("menu");
 		  
-		  res.write("<form method='post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
 	
 		//Breakfast
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<div id='bfast'>");
-				  res.write("<h1>Breakfast</h1>");
+				  var bfast = "";
+				  bfast += ("<div id='bfast'>");
+				  bfast += ("<h1>Breakfast</h1>");
 				  for (i=0; i<items.length; i++) {
-					 res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					 bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  res.write("</div>");
+				  bfast += ("</div>");
 			  }
 		  });
 		  
@@ -117,12 +117,13 @@ app.get('/my_choice.html', function (req, res) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<div id='lunch'>");
-				  res.write("<h1>Lunch</h1>");
+				  var lunch = "";
+				  lunch += ("<div id='lunch'>");
+				  lunch += ("<h1>Lunch</h1>");
 				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  res.write("</div>");
+				  lunch += ("</div>");
 			  }
 		  });
 		  //Dinner
@@ -130,15 +131,15 @@ app.get('/my_choice.html', function (req, res) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<div id='dinner'>");
-				  res.write("<h1>Dinner</h1>");
+				  var dinner = "";
+				  dinner += ("<div id='dinner'>");
+				  dinner += ("<h1>Dinner</h1>");
 				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
-				  res.write("</div>");
+				  dinner += ("</div>");
 			  }
 		  });
-		  res.write("</form>");
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 

@@ -217,7 +217,7 @@ app.get('/my_choice.html', function (req, res) {
 	  
     });
 });
-app.post('/my_choice.html/process', function (req, res) {
+app.get('/my_choice.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
 	pdata = "";

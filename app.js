@@ -94,19 +94,17 @@ app.get('/my_choice.html', function (req, res) {
 		}
 		var dbo = db.db("tuftsdining");
 		var coll = dbo.collection("menu");
-		  
-		  //form of foods
-		  res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
 	
 		//Breakfast
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<h1><div class='mealheaders'>Breakfast</div></h1>");
+				  var bfast = "";
 				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
+				  document.getElementById("bfast").innerHTML += bfast;
 			  }
 		  });
 		  
@@ -115,10 +113,11 @@ app.get('/my_choice.html', function (req, res) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<h1><div class='mealheaders'>Lunch</div></h1>");
+				  var lunch = "";
 				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
+				  document.getElementById("lunch").innerHTML += lunch;
 			  }
 		  });
 		  //Dinner
@@ -126,14 +125,13 @@ app.get('/my_choice.html', function (req, res) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
-				  res.write("<h1><div class='mealheaders'>Dinner</div></h1>");
+				  var dinner = "";
 				  for (i=0; i<items.length; i++) {
-					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				  }
+				  document.getElementById("lunch").innerHTML += lunch;
 			  }
 		  });
-		  res.write("<input type='submit' value='Submit'/>");
-		  res.write("</form>");
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 

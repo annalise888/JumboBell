@@ -241,7 +241,7 @@ app.get('/my_choice.html', function (req, res) {
 		  
 		  res.write("</table>");
 		  res.write("<input type = 'hidden' id = 'checknum'>");
- 		  res.write("<input type='submit'/>");
+ 		  res.write("<input type='submit' value = 'Submit Foods'/>");
  		  res.write("</form>");
 		  
 		  res.write("<script>");

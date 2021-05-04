@@ -33,7 +33,6 @@ app.get('/index.html', function (req, res, next) {
     });
 });
 app.get('/index.html/process', function (req, res, next) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -69,9 +68,9 @@ app.get('/index.html/process', function (req, res, next) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		}); 
-	setTimeout(function(){res.end();}, 2000);
 });
-return next();
+res.redirect('/home.html');
+return;
 });
 app.get('/home.html', function (req, res) {
   file = 'home.html';

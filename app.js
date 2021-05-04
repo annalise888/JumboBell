@@ -11,7 +11,7 @@ var app = express();
 app.use(express.static("public"));
 var file;
 app.get('/', function (req, res) {
-  file = 'home.html';
+  file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -19,8 +19,8 @@ app.get('/', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/home.html', function (req, res) {
-  file = 'home.html';
+app.get('/index.html', function (req, res) {
+  file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});

@@ -108,30 +108,30 @@ app.get('/my_choice.html', function (req, res) {
 			  }
 		  });
 		  
-		  //Lunch
-		  coll.find({meal:"lunch"}).toArray(function(err,items) {
-			  if(err) {
-				  console.log("Error: " + err);
-			  } else {
-				  var lunch = "";
-				  for (i=0; i<items.length; i++) {
-					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				  }
-				  document.getElementById("lunch").innerHTML = lunch;
-			  }
-		  });
-		  //Dinner
-		  coll.find({meal:"dinner"}).toArray(function(err,items) {
-			  if(err) {
-				  console.log("Error: " + err);
-			  } else {
-				  var dinner = "";
-				  for (i=0; i<items.length; i++) {
-					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				  }
-				  document.getElementById("lunch").innerHTML = lunch;
-			  }
-		  });
+// 		  //Lunch
+// 		  coll.find({meal:"lunch"}).toArray(function(err,items) {
+// 			  if(err) {
+// 				  console.log("Error: " + err);
+// 			  } else {
+// 				  var lunch = "";
+// 				  for (i=0; i<items.length; i++) {
+// 					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+// 				  }
+// 				  document.getElementById("lunch").innerHTML = lunch;
+// 			  }
+// 		  });
+// 		  //Dinner
+// 		  coll.find({meal:"dinner"}).toArray(function(err,items) {
+// 			  if(err) {
+// 				  console.log("Error: " + err);
+// 			  } else {
+// 				  var dinner = "";
+// 				  for (i=0; i<items.length; i++) {
+// 					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+// 				  }
+// 				  document.getElementById("lunch").innerHTML = lunch;
+// 			  }
+// 		  });
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 

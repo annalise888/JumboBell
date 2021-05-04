@@ -82,7 +82,7 @@ app.get('/index.html/process', function (req, res) {
 		});  
 
 });
-	res.render("home.html");
+	res.render("home");
 });
 
 app.get('/my_choice.html', function (req, res) {

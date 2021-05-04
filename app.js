@@ -50,7 +50,7 @@ app.get('/index.html/process', function (req, res) {
 	res.write("Redirecting to home page...");
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
-			res.write("Hello");
+		console.log("hello");
 		  if(err) { return console.log(err); }
 
 			var dbo = db.db("users");

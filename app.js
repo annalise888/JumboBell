@@ -198,10 +198,16 @@ app.get('/my_choice.html', function (req, res) {
  		  res.write("</form>");
 		  
 		  res.write("<script>");
-		  res.write("if(document.getElementsByName('bfast') == true ){var check = 'true'};");
+		  res.write("function getFormData(){");
+		  res.write("var check = 0;");
+		  res.write(" var items = document.getElementsByName('bfast');");
+		  res.write("for (var i = 0; i < items.length; i++) {");
+		  res.write("if (items[i].checked == true) {");
+		  res.write("++check;}}");
 		  res.write("document.getElementById('hidden').innerHTML = check;");
+		  res.write("};");
 		  res.write("</script>");
-	
+		
 		  
 		  
 		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
@@ -220,7 +226,9 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
+	var x = pdata["hidden"];
 	res.write("processing");
+	res.write(x);
 	setTimeout(function(){res.end();}, 2000);
 
 });  

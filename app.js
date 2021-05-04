@@ -97,7 +97,7 @@ app.get('/my_choice.html', function (req, res) {
 		  
 	
 		//Breakfast
-		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
+		  coll.distinct('food',{meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
@@ -113,7 +113,7 @@ app.get('/my_choice.html', function (req, res) {
 		  });
 		  
 		  //Lunch
-		  coll.find({meal:"Lunch"}).toArray(function(err,items) {
+		  coll.distinct('food',{meal:"Lunch"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
@@ -128,7 +128,7 @@ app.get('/my_choice.html', function (req, res) {
 			  }
 		  });
 		  //Dinner
-		  coll.find({meal:"Dinner"}).toArray(function(err,items) {
+		  coll.distinct('food',{meal:"Dinner"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {

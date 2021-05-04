@@ -24,6 +24,7 @@
 
 .container1:hover .lid {
   top: 5px;
+	cursor: pointer;
 }
 
 .lid {
@@ -228,65 +229,6 @@
     );
 }
 
-.taco {
-  position: absolute;
-  height: 40px;
-  width: 80px;
-  top: 230px;
-  left: 20px;
-  background: 
-    radial-gradient(
-      circle farthest-corner at 40px 25px,
-      #F5B041 2px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle farthest-corner at 25px 30px,
-      #F5B041 2px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle farthest-corner at 55px 30px,
-      #F5B041 2px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle farthest-corner at 40px 40px,
-      goldenrod 30px,
-      transparent 30px
-    ),
-    radial-gradient(
-      circle farthest-corner at 36px 13px,
-      #d42a19 8px,
-      transparent 8px
-    ),
-    radial-gradient(
-      circle farthest-corner at 64px 30px,
-      #d42a19 8px,
-      transparent 8px
-    ),
-    radial-gradient(
-      circle farthest-corner at 58px 24px,
-      green 10px,
-      transparent 10px
-    ),
-    radial-gradient(
-      circle farthest-corner at 46px 16px,
-      green 10px,
-      transparent 10px
-    ),
-    radial-gradient(
-      circle farthest-corner at 26px 20px,
-      green 10px,
-      transparent 10px
-    ),
-    radial-gradient(
-      circle farthest-corner at 16px 28px,
-      green 10px,
-      transparent 10px
-    );
-}
-
 .cake {
   position: absolute;
   top: 222px;
@@ -416,26 +358,25 @@
       <br>
       <br>
       <div class="animation">
-        <div class="container1">
+	<div class="container1">
           <div class="lid"></div>
-          <div class="hamburger"></div>
+          <div class="cake" onclick = "location.href='menu.html/breakfast';"></div>
           <div class="plate"></div>
+		<p>"Breakfast"</p>
         </div>
         <div class="container1">
           <div class="lid"></div>
-          <div class="pasta"></div>
+          <div class="hamburger" onclick = "location.href='menu.html/lunch';"></div>
           <div class="plate"></div>
+		<p>"Lunch"</p>
         </div>
         <div class="container1">
           <div class="lid"></div>
-          <div class="taco"></div>
+          <div class="pasta" onclick = "location.href='menu.html/dinner';"></div>
           <div class="plate"></div>
+		<p>"Dinner"</p>
         </div>
-        <div class="container1">
-          <div class="lid"></div>
-          <div class="cake"></div>
-          <div class="plate"></div>
-        </div>
+        
       </div>
       
 	    

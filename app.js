@@ -89,26 +89,53 @@ app.get('/my_choice.html', function (req, res) {
       res.write(txt);
 	  
 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-			if (err) {
-				return console.log("err");
-			}
-			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu");
-		  	
-			    coll.find().toArray(function(err,items) {
-				if (err) {
-				   console.log("Error: " + err);
-				} else {
-					res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
-				    for (i=0; i < items.length; i++) {    
-					    res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-				    }
-					res.write("<input type='submit' value='Submit'/>");
-					res.write("</form>");
-				}
-			    })
-
-			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+		if (err) {
+			return console.log("err");
+		}
+		var dbo = db.db("tuftsdining");
+		var coll = dbo.collection("menu");
+		  
+		  //form of foods
+		  res.write("<form method = 'post' action = 'https://jumbo-bell.herokuapp.com/my_choice.html/process'>");
+	
+		//Breakfast
+		  coll.find(meal:"breakfast").toArray(function(err,items) {
+			  if(err) {
+				  console.log("Error: " + err);
+			  } else {
+				  res.write("<h1><div class='mealheaders'>Breakfast</div></h1>");
+				  for (i=0; i<items.length; i++) {
+					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+				  }
+			  }
+		  });
+		  
+		  //Lunch
+		  coll.find(meal:"lunch").toArray(function(err,items) {
+			  if(err) {
+				  console.log("Error: " + err);
+			  } else {
+				  res.write("<h1><div class='mealheaders'>Lunch</div></h1>");
+				  for (i=0; i<items.length; i++) {
+					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+				  }
+			  }
+		  });
+		  //Dinner
+		  coll.find(meal:"dinner").toArray(function(err,items) {
+			  if(err) {
+				  console.log("Error: " + err);
+			  } else {
+				  res.write("<h1><div class='mealheaders'>Dinner</div></h1>");
+				  for (i=0; i<items.length; i++) {
+					  res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+				  }
+			  }
+		  });
+		  res.write("<input type='submit' value='Submit'/>");
+		  res.write("</form>");
+		  
+		setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
 
 		});
       setTimeout(function(){res.end();}, 2000);

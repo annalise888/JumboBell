@@ -151,6 +151,17 @@ app.get('/menu.html', function (req, res) {
     });
 });
 
+//code to add a food to the users favorites 
+app.get('/menu.html/process', function (req, res) {
+	res.writeHead(200, {'Content-Type':'text/html'});
+	
+	res.write("Hello");
+
+	
+	
+	setTimeout(function(){res.end();}, 2000);
+
+});
 
 app.get('/menu.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});

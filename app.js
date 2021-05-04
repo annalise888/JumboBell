@@ -80,6 +80,52 @@ app.get('/home.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+
+app.get('/menu.html/breakfast',function(req,res) {
+	file = 'my_choice.html';
+	fs.readFile(file, function(err, txt) {
+	      if(err) { return console.log(err); }
+	      res.writeHead(200, {'Content-Type': 'text/html'});
+	      res.write(txt);	  
+	  
+		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+			if (err) {
+				return console.log("err");
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");
+
+			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process'>");
+			  var bfastarr = [];
+			  coll.find({meal:"breakfast"}).toArray(function(err,items) {
+				  if(err) {
+					  console.log("Error: " + err);
+				  } else {
+					  var bfast = "";
+					  bfast += ("<div id='bfast' style='width:30%;'>");
+					  bfast += ("<h1>Breakfast</h1>");
+					  for (i=0; i<items.length; i++) {
+						  //check if repeated value
+						  var repeatedvalue = false;
+						  for (j=0;j<bfastarr.length;j++) {
+							  if (items[i].food == bfastarr[j]) {
+								  repeatedvalue = true;
+								  break;
+							  }
+						  }
+						  if (!repeatedvalue) {
+							  bfast += ("<input type='checkbox' name='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
+						  }
+						  bfastarr.push(items[i].food);
+
+					  }
+					  bfast += ("</div>");
+					  res.write(bfast);
+				  }
+			  });
+		  });
+	
+});
 app.get('/my_choice.html', function (req, res) {
   file = 'my_choice.html';
   fs.readFile(file, function(err, txt) {

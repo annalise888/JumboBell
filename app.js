@@ -88,7 +88,7 @@ app.get('/my_choice.html', function (req, res) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
 	  
-	  document.getElementById("bfast").innerHTML = "breakfast";
+// 	  document.getElementById("bfast").innerHTML = "breakfast";
 	  
 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 		if (err) {

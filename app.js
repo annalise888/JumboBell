@@ -97,6 +97,7 @@ app.get('/my_choice.html', function (req, res) {
 		  
 	
 		//Breakfast
+		  var bfastarr = [];
 		  coll.find({meal:"breakfast"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
@@ -105,7 +106,13 @@ app.get('/my_choice.html', function (req, res) {
 				  bfast += ("<div id='bfast'>");
 				  bfast += ("<h1>Breakfast</h1>");
 				  for (i=0; i<items.length; i++) {
-					 bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					 if (repeatedValue(bfastarr,items[i].food)) {
+						 continue;
+					 } else {
+						 bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						 bfastarr.push(items[i].food);
+					 }
+					 
 				  }
 				  bfast += ("</div>");
 				  res.write(bfast);
@@ -113,30 +120,46 @@ app.get('/my_choice.html', function (req, res) {
 		  });
 		  
 		  //Lunch
+		  var luncharr = [];
 		  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
+				  
 				  var lunch = "";
 				  lunch += ("<div id='lunch'>");
 				  lunch += ("<h1>Lunch</h1>");
 				  for (i=0; i<items.length; i++) {
-					  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  if (repeatedValue(luncharr,items[i].food)) {
+						  continue;
+					  } else {
+						  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						  luncharr.push(items[i].food);
+					  }
+					  
 				  }
 				  lunch += ("</div>");
 				  res.write(lunch);
 			  }
 		  });
 		  //Dinner
+		  var dinnerarr = [];
 		  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 			  if(err) {
 				  console.log("Error: " + err);
 			  } else {
+				  
 				  var dinner = "";
 				  dinner += ("<div id='dinner'>");
 				  dinner += ("<h1>Dinner</h1>");
 				  for (i=0; i<items.length; i++) {
-					  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  if (repeatedValue(dinnerarr,items[i].food)) {
+						  continue;
+					  } else {
+						  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+						  dinnerarr.push(items[i].food);
+					  }
+					  
 				  }
 				  dinner += ("</div>");
 				  res.write(dinner);
@@ -150,6 +173,14 @@ app.get('/my_choice.html', function (req, res) {
 
 		});
       setTimeout(function(){res.end();}, 2000);
+	  function repeatedValue(arr,item) {
+		  for (i=0;i<arr.length;i++) {
+			  if (item == arr[i]) {
+				  return true;
+			  }
+		  }
+		  return false;
+	  }
     });
 });
 app.post('/my_choice.html/process', function (req, res) {
@@ -218,120 +249,120 @@ app.get('/about.html', function (req, res) {
 //});
 
 //code to get all of current users favorite foods being served 
-app.get('/my_choice.html/finduserfoods', function (req, res) {
-	res.writeHead(200, {'Content-Type':'text/html'});
+// app.get('/my_choice.html/finduserfoods', function (req, res) {
+// 	res.writeHead(200, {'Content-Type':'text/html'});
 	
-	res.write("Hello");
+// 	res.write("Hello");
 	
-	res.write(req.url);
-	res.write(" SHOUld get actual thing: ")
-	var stringURL = req.url.toString()
-	res.write(stringURL );
+// 	res.write(req.url);
+// 	res.write(" SHOUld get actual thing: ")
+// 	var stringURL = req.url.toString()
+// 	res.write(stringURL );
 	
-	stringURL = stringURL.split("=");
-	stringURL = stringURL[1];
+// 	stringURL = stringURL.split("=");
+// 	stringURL = stringURL[1];
 	
-	stringURL  = (decodeURIComponent(stringURL));
+// 	stringURL  = (decodeURIComponent(stringURL));
 
-	res.write("important bit: " + stringURL );
+// 	res.write("important bit: " + stringURL );
 	
-	    res.write("Uploading user foods app");
+// 	    res.write("Uploading user foods app");
 
-    getusersfoods(stringURL);
+//     getusersfoods(stringURL);
 
-    function getusersfoods(useremail) {
+//     function getusersfoods(useremail) {
         
-       // useremail = "cpekowsky@gmail.com";
+//         useremail = "cpekowsky@gmail.com";
         
-        MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
+//         MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
             
             
-            if (err) {
-                console.log("Connection err: " + err);
-            }
-            var dbo = db.db("users");
-            var coll = dbo.collection('profiles');
-            //var coll = dbo.collection("profile2");
+//             if (err) {
+//                 console.log("Connection err: " + err);
+//             }
+//             var dbo = db.db("users");
+//             var coll = dbo.collection('profiles');
+//             //var coll = dbo.collection("profile2");
             
-            var myquery = { email: useremail };
+//             var myquery = { email: useremail };
                         
-            coll.find( myquery ).toArray(function(err, items) {
+//             coll.find( myquery ).toArray(function(err, items) {
                 
-                  if (err) {
-                      res.write("Error: " + err);  
-                      res.write("<br>")
+//                   if (err) {
+//                       res.write("Error: " + err);  
+//                       res.write("<br>")
 
-                  } 
+//                   } 
                   
-                  if( items.length == 0 ) {
-                      res.write("no user of this email found");
-                      res.write("<br>")
+//                   if( items.length == 0 ) {
+//                       res.write("no user of this email found");
+//                       res.write("<br>")
 
-                  }
+//                   }
                   
-                  else   {
+//                   else   {
                       
-                      var foods = items[0].foods;
+//                       var foods = items[0].foods;
                       
-                      for(var i = 0; i < foods.length; i++ ) {
-                          res.write(foods[i]);
-                          res.write("<br>")
-                          getfoods(foods[i] );
-                      }
+//                       for(var i = 0; i < foods.length; i++ ) {
+//                           res.write(foods[i]);
+//                           res.write("<br>")
+//                           getfoods(foods[i] );
+//                       }
                       
-                  }
+//                   }
                   
-                  db.close();
+//                   db.close();
                   
-            })
+//             })
 
             
     
 
             
-            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
-        })
+//             setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+//         })
 
         
-    }
+//     }
     
     
     
-    function getfoods(foodName ) {
+//     function getfoods(foodName ) {
                 
-        MongoClient.connect(foodsurl,{useUnifiedTopology:true},function(err, db ) {
+//         MongoClient.connect(foodsurl,{useUnifiedTopology:true},function(err, db ) {
             
-            var dbo = db.db("tuftsdining");
-            var coll = dbo.collection("menu");
+//             var dbo = db.db("tuftsdining");
+//             var coll = dbo.collection("menu");
 
             
             
-            if (err) {
-                console.log("Connection err: " + err);
-            }
+//             if (err) {
+//                 console.log("Connection err: " + err);
+//             }
             
-            var query = {food:{$regex : ".*" + foodName + ".*"}}
+//             var query = {food:{$regex : ".*" + foodName + ".*"}}
     
-            //var sendstring = "";
+//             //var sendstring = "";
             
-            coll.find(query).toArray(function(err,items) {
-                if (err) {
-                   res.write("Error: " + err);
-                } else if (items.length == 0) {
-                    res.write(" No food being served with the name " + foodName);
-                    res.write("<br>")
+//             coll.find(query).toArray(function(err,items) {
+//                 if (err) {
+//                    res.write("Error: " + err);
+//                 } else if (items.length == 0) {
+//                     res.write(" No food being served with the name " + foodName);
+//                     res.write("<br>")
 
-                } else {
-                    for (i=0; i < items.length; i++) {
-                        res.write(" user food: " + foodName + " served food: " + items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + "<br>");
-                        //sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " <br>") ;
-                        //console.log(sendstring);
-                    }
-                }
+//                 } else {
+//                     for (i=0; i < items.length; i++) {
+//                         res.write(" user food: " + foodName + " served food: " + items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + "<br>");
+//                         //sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " <br>") ;
+//                         //console.log(sendstring);
+//                     }
+//                 }
                 
-                //res.write(sendstring);
+//                 //res.write(sendstring);
 
-            })
+//             })
             
         
 
@@ -339,18 +370,18 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 
 
         
-        setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
-    })
+//         setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+//     })
 
         
-    }
+//     }
     
 
 
-	setTimeout(function(){res.end();}, 2000);
+// 	setTimeout(function(){res.end();}, 2000);
 
 
-});
+// });
 
 
 //code to add a food to the users favorites 

@@ -87,15 +87,6 @@ app.get('/my_choice.html', function (req, res) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);	  
 	  
-	  function repeatedValue(arr,item) {
-		  for (i=0;i<arr.length;i++) {
-			  if (item == arr[i]) {
-				  return true;
-			  }
-		  }
-		  return false;
-	  }
-	  
 	  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
 		if (err) {
 			return console.log("err");
@@ -116,12 +107,18 @@ app.get('/my_choice.html', function (req, res) {
 				  bfast += ("<div id='bfast'>");
 				  bfast += ("<h1>Breakfast</h1>");
 				  for (i=0; i<items.length; i++) {
-					 if (repeatedValue(bfastarr,items[i].food)) {
-						 continue;
-					 } else {
-						 bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-						 bfastarr.push(items[i].food);
-					 }
+					  //check if repeated value
+					  var repeatedvalue = false;
+					  for (j=0;j<bfastarr.length;j++) {
+						  if (items[i].food == bfastarr[j]) {
+							  repeatedvalue = true;
+							  break;
+						  }
+					  }
+					  if (!repeatedvalue) {
+						  bfast += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  }
+					  bfastarr.push(items[i].food);
 					 
 				  }
 				  bfast += ("</div>");
@@ -140,13 +137,19 @@ app.get('/my_choice.html', function (req, res) {
 				  lunch += ("<div id='lunch'>");
 				  lunch += ("<h1>Lunch</h1>");
 				  for (i=0; i<items.length; i++) {
-					  if (repeatedValue(luncharr,items[i].food)) {
-						  continue;
-					  } else {
-						  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-						  luncharr.push(items[i].food);
+					  //check if repeated value
+					  var repeatedvalue = false;
+					  for (j=0;j<luncharr.length;j++) {
+						  if (items[i].food == luncharr[j]) {
+							  repeatedvalue = true;
+							  break;
+						  }
 					  }
-					  
+					  if (!repeatedvalue) {
+						  lunch += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  }
+					  luncharr.push(items[i].food);
+					 
 				  }
 				  lunch += ("</div>");
 				  res.write(lunch);
@@ -163,13 +166,19 @@ app.get('/my_choice.html', function (req, res) {
 				  dinner += ("<div id='dinner'>");
 				  dinner += ("<h1>Dinner</h1>");
 				  for (i=0; i<items.length; i++) {
-					  if (repeatedValue(dinnerarr,items[i].food)) {
-						  continue;
-					  } else {
-						  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
-						  dinnerarr.push(items[i].food);
+					  //check if repeated value
+					  var repeatedvalue = false;
+					  for (j=0;j<dinnerarr.length;j++) {
+						  if (items[i].food == dinnerarr[j]) {
+							  repeatedvalue = true;
+							  break;
+						  }
 					  }
-					  
+					  if (!repeatedvalue) {
+						  dinner += ("<input type='radio'>" + items[i].food + "</input>" + "<br>");
+					  }
+					  dinnerarr.push(items[i].food);
+					 
 				  }
 				  dinner += ("</div>");
 				  res.write(dinner);

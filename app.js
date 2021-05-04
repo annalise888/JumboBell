@@ -110,8 +110,6 @@ app.get('/my_choice.html', function (req, res) {
 					res.write("<input type='submit' value='Submit'/>");
 					res.write("</form>");
 				}
-
-				res.write(sendstring);
 			    })
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);

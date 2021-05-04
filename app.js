@@ -68,7 +68,6 @@ app.post('/index.html/process', function (req, res, next) {
 			
 			setTimeout(function(){db.close;}, 2000);
 		});  
-	  next();
 });
 });
 app.get('/home.html', function (req, res) {

@@ -107,12 +107,11 @@ app.get('/my_choice.html', function (req, res) {
 				    for (i=0; i < items.length; i++) {    
 					    res.write("<input type='radio'>" + items[i].food + "</input>" + "<br>");
 				    }
+					res.write("<input type='submit' value='Submit'/>");
 					res.write("</form>");
 				}
 
 				res.write(sendstring);
-			//         sendmail(sendstring)
-
 			    })
 
 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
@@ -129,38 +128,38 @@ app.post('/my_choice.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var Email = String(pdata["email"]);
-	var name = String(pdata["fullname"]);
-			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
-			if (err) {
-				return console.log("err");
-			}
-			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu");
+	  res.write("processing");
+// 	var Email = String(pdata["email"]);
+// 	var name = String(pdata["fullname"]);
+// 			MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
+// 			if (err) {
+// 				return console.log("err");
+// 			}
+// 			var dbo = db.db("tuftsdining");
+// 			var coll = dbo.collection("menu");
 
-			var query = {food:{$regex : ".*" + pdata['foodname'] + ".*"}}
+// 			var query = {food:{$regex : ".*" + pdata['foodname'] + ".*"}}
 
-			    var sendstring = "";
-			    coll.find(query).toArray(function(err,items) {
-				if (err) {
-				   console.log("Error: " + err);
-				} else if (items.length == 0) {
-				    sendstring = "No food being served with that name.";
-				} else {
-				    for (i=0; i < items.length; i++) {
-					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
-					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-					//console.log(sendstring);
-				    }
-				}
+// 			    var sendstring = "";
+// 			    coll.find(query).toArray(function(err,items) {
+// 				if (err) {
+// 				   console.log("Error: " + err);
+// 				} else if (items.length == 0) {
+// 				    sendstring = "No food being served with that name.";
+// 				} else {
+// 				    for (i=0; i < items.length; i++) {
+// 					//console.log(items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate);
+// 					sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
+// 					//console.log(sendstring);
+// 				    }
+// 				}
 
-				res.write(sendstring);
-			//         sendmail(sendstring)
+// 				res.write(sendstring);
 
-			    })
+// 			    })
 
-			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
-		});
+// 			setTimeout(function(){ db.close(); console.log("Success!");}, 2000);
+// 		});
 			console.log("Success!");
 
 		});  

@@ -156,6 +156,16 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 	res.write("Hello");
 
 	setTimeout(function(){res.end();}, 2000);
+	
+	res.write(req.url);
+	res.write(" SHOUld get actual thing: ")
+	var stringURL = req.url.toString()
+	res.write(stringURL );
+	
+	stringURL = stringURL.split("=");
+	stringURL = stringURL[1];
+	res.write("important bit: " + stringURL );
+
 
 });
 

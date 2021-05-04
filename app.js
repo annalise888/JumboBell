@@ -14,7 +14,7 @@ const foodsurl = "mongodb+srv://user1:caleb@cluster0.0y4mi.mongodb.net/myFirstDa
 var app = express();
 app.use(express.static("public"));
 var file;
-app.get('/', function (req, res) {
+app.get('/', function (req, res, next) {
   file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/index.html', function (req, res) {
+app.get('/index.html', function (req, res, next) {
   file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }

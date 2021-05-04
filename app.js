@@ -11,16 +11,7 @@ var app = express();
 app.use(express.static("public"));
 var file;
 app.get('/', function (req, res) {
-  file = 'index.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
-    });
-});
-app.get('/index.html', function (req, res) {
-  file = 'index.html';
+  file = 'home.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -37,7 +28,16 @@ app.get('/home.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.post('/index.html/process', function (req, res) {
+app.get('/home.html', function (req, res) {
+  file = 'home.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
+});
+app.post('/home.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
 	pdata = "";

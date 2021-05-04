@@ -26,8 +26,8 @@ app.get('/index.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/login.html', function (req, res) {
-  file = 'login.html';
+app.get('/home.html', function (req, res) {
+  file = 'home.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -35,7 +35,7 @@ app.get('/login.html', function (req, res) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.post('/login.html/process', function (req, res) {
+app.post('/index.html/process', function (req, res) {
   res.writeHead(200, {'Content-Type':'text/html'});
 	console.log("Process the form");
 	pdata = "";
@@ -44,12 +44,7 @@ app.post('/login.html/process', function (req, res) {
     });
   req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var name = String(pdata['fullname']);
-	res.write("Name: ");
-	res.write(name);
-	var Email = String(pdata['email']);
-	res.write(" Email: ");
-	res.write(Email);
+	res.write("User signed in successfullY!");
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		  if(err) { return console.log(err); }
@@ -73,8 +68,11 @@ app.post('/login.html/process', function (req, res) {
 				} 
 
 				});
+			res.write("Redirecting to home page...");
 
 			setTimeout(function(){db.close;}, 2000);
+			res.redirect('https://jumbo-bell.herokuapp.com/index.html/process');
+
 			console.log("Success!");
 
 		});  

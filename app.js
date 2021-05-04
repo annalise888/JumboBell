@@ -51,6 +51,7 @@ app.get('/index.html/process', function (req, res) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
+	var name = pdata["fullname"];
 	res.write("User signed in successfully! ");
 	res.write("Redirecting to home page...");
 	

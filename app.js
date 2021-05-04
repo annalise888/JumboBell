@@ -158,8 +158,8 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 	//const queryObject = url.parse(req.url,true).query;
 	
   	res.write(req.url);
-	var myurl = req.url;
-	myurl = toString(myurl);
+	var myurl = req.url.toString();
+	//myurl = toString(myurl);
 	//myurl = myurl.split("foodname=");
 	//myurl = myurl[1];
   	//res.write(<br>);

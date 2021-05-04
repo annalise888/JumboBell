@@ -121,7 +121,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  }
 					  bfast += ("</div>");
 					  res.write(bfast);
-					  res.write("<input type='submit' value='Add Selected Food to Favorites/>
+					  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
 					  res.write("</form>");
 				  }
 			  });

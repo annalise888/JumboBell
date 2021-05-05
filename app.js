@@ -312,6 +312,16 @@ app.get('/menu.html', function (req, res) {
    });
 });
 
+app.get('/account.html',function(req,res) {
+	file = 'account.html';
+	fs.readFile(file, function(err, txt) {
+     	if(err) { return console.log(err); }
+     	res.writeHead(200, {'Content-Type': 'text/html'});
+     	res.write(txt);
+     	setTimeout(function(){res.end();}, 2000);
+   });
+});
+
 // code to get all of current users favorite foods being served 
 app.get('/my_choice.html/finduserfoods', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});

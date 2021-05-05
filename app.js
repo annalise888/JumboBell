@@ -95,7 +95,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");
 
-			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
+			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' >");
 			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 
 			  var bfastarr = [];
@@ -116,7 +116,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 							  }
 						  }
 						  if (!repeatedvalue) {
-							  bfast += ("<input type='checkbox' name='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
+							  bfast += ("<input type='checkbox'  onchange='getFormData()' name='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
 						  }
 						  bfastarr.push(items[i].food);
 

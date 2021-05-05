@@ -227,7 +227,7 @@ app.get('/menu.html/dinner',function (req,res) {
 				  }
 			  });
 		  });
-		setTimeout(function(){db.close;}, 2000);
+		setTimeout(function(){dbo.close;}, 2000);
 	});
 });
 app.post('/menu.html/process', function (req, res) {

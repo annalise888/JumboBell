@@ -128,7 +128,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 			  });
 			  
 		  });
-		setTimeout(function(){db.close;}, 2000);
+		setTimeout(function(){dbo.close;}, 2000);
 	});
 	
 });

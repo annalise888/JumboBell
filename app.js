@@ -257,20 +257,26 @@ app.get('/menu.html/dinner',function (req,res) {
 	});
 });
 app.post('/menu.html/process', function (req, res) {
-  res.writeHead(200, {'Content-Type':'text/html'});
-	console.log("Process the form");
-	pdata = "";
-	req.on('data', data => {
-           pdata += data.toString();
-    });
-  req.on('end', () => {
+	file='processchoices.html';
+	fs.readFile(file,function(err,txt) {
+		if(err) {return console.log(err);}
+		res.writeHead(200, {'Content-Type':'text/html'});
+		console.log("Process the form");
+		pdata = "";
+		req.on('data', data => {
+			pdata += data.toString();
+		});
+	});
+  
+	req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var x = String(pdata['hidden']);
 	res.write("processing");
 	res.write(x);
 	setTimeout(function(){res.end();}, 2000);
 
-});  
+	});  
+	
 });
 app.get('/about.html', function (req, res) {
   file = 'about.html';

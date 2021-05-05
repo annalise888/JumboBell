@@ -187,7 +187,19 @@ app.get('/menu.html/lunch',function (req,res) {
 					  }
 					  lunch += ("</div>");
 					  res.write(lunch);
+					  res.write("<input type = 'text' id = 'hidden2' name = 'hidden' >");
 					  res.write("</form>");
+
+					  res.write("<script>");
+					  res.write("function getFormData(){");
+					  res.write("var check ='';");
+					  res.write(" var items = document.getElementsByName('lunch');");
+					  res.write("for (var i = 0; i < items.length; i++) {");
+					  res.write("if (items[i].checked == true) {");
+					  res.write("check += items[i].value;}}");
+					  res.write("document.getElementById('hidden2').value = check;");
+					  res.write("};");
+					  res.write("</script>");
 					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
@@ -237,17 +249,18 @@ app.get('/menu.html/dinner',function (req,res) {
 					  }
 					  dinner += ("</div>");
 					  res.write(dinner);
+					  res.write("<input type = 'text' id = 'hidden3' name = 'hidden' >");
+					  res.write("</form>");
 					  res.write("<script>");
 					  res.write("function getFormData(){");
-					  res.write("var check = '';");
-					  res.write(" var items = document.getElementsByName('bfast');");
+					  res.write("var check ='';");
+					  res.write(" var items = document.getElementsByName('dinner');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");
-					  res.write("check += items[i].innerHTML;}}");
-					  res.write("document.getElementById('hidden').innerHTML = check;");
+					  res.write("check += items[i].value;}}");
+					  res.write("document.getElementById('hidden3').value = check;");
 					  res.write("};");
 					  res.write("</script>");
-					  res.write("</form>");
 					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });

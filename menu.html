@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>menu page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="home.css"> 
+    <style media="screen"> 
+      .navbar{
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url("https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2534&q=80");
+      }  
+.animation {
+	position:relative;
+  	display: grid;
+  	grid-template-columns: 1fr 1fr 1fr;
+	margin:50px;
+	bottom:10px;
+	background-color:#e1e9f5;
+		  
+}
+
+.container1 {
+  width: 120px;
+  height: 300px;
+  margin: 0px auto;
+  position: relative;
+	bottom:60px;
+	
+}
+	    
+.container1:hover {
+	cursor:pointer;
+}
+
+.container1:hover .lid {
+  top: 5px;
+}
+.container1:hover .mealhead {
+	transition: all .2s ease-in;
+	transform:translateY(-5px);
+	background-color:white;
+}
+.mealhead {
+	position:relative;
+	top:300px;
+	text-align:center;
+	Font-family: Lucida Bright, Georgia, serif;
+	color: #2f486e;
+	background-color:#c3cfe3;
+	border-radius:5px;
+}
+	 
+
+.lid {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  border-radius: 80px 80px 0px 0px;
+  top: 200px;
+  transition: top ease .5s;
+  background-color: #ccc;
+  background: radial-gradient(
+    circle farthest-corner at -10px -60px,
+    #ccc 75%,
+    #bbb 75%
+  );
+  z-index: 3;
+}
+
+.lid::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50px;
+  width: 20px;
+  height: 10px;
+  background: linear-gradient(to bottom, grey 50%, transparent 50%),
+    linear-gradient(
+      to right,
+      transparent 25%,
+      darkgray 25%,
+      darkgray 75%,
+      transparent 75%
+    );
+}
+
+.plate {
+  width: 110%;
+  left: -5%;
+  height: 10px;
+  background: linear-gradient(155deg, #aaa 50%, #999 50%);
+  position: absolute;
+  top: 270px;
+}
+
+.taco {
+  position: absolute;
+  height: 40px;
+  width: 80px;
+  top: 230px;
+  left: 20px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 40px 25px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 30px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 55px 30px,
+      #F5B041 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle farthest-corner at 40px 40px,
+      goldenrod 30px,
+      transparent 30px
+    ),
+    radial-gradient(
+      circle farthest-corner at 36px 13px,
+      #d42a19 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 64px 30px,
+      #d42a19 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 58px 24px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 46px 16px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 26px 20px,
+      green 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 16px 28px,
+      green 10px,
+      transparent 10px
+    );
+}
+
+
+.pasta {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  background-color: red;
+  top: 230px;
+  left: 10px;
+  background: radial-gradient(
+      circle farthest-corner at 48px 38px,
+      #e74c3c 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle farthest-corner at 64px 42px,
+      goldenrod 8px,
+      #fad7a0 8px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    ),
+    radial-gradient(
+      circle farthest-corner at 60px 18px,
+      #e74c3c 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 48px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    ),
+    radial-gradient(
+      circle farthest-corner at 22px 24px,
+      #e74c3c 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 30px,
+      goldenrod 8px,
+      #fad7a0 8px,
+      #fad7a0 12px,
+      goldenrod 12px,
+      goldenrod 16px,
+      #fad7a0 16px,
+      #fad7a0 20px,
+      goldenrod 20px,
+      goldenrod 24px,
+      transparent 24px
+    );
+}
+
+.pasta::before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 20px;
+  left: 72px;
+  top: -10px;
+  transform: rotate(45deg);
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 1px white, 0px 0px 0px 1px white;
+  background: linear-gradient(
+      to right,
+      transparent 8px,
+      #ccc 8px,
+      #ccc 12px,
+      transparent 12px
+    ),
+    linear-gradient(to bottom, white 60%, #ccc 60%, #ccc 70%, transparent 70%),
+    linear-gradient(
+      to right,
+      #ccc 4px,
+      white 4px,
+      white 8px,
+      #ccc 8px,
+      #ccc 12px,
+      white 12px,
+      white 16px,
+      #ccc 16px
+    );
+}
+
+.cake {
+  position: absolute;
+  top: 222px;
+  left: 15px;
+  height: 48px;
+  width: 90px;
+  border-radius: 8px 8px 0px 0px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 25px 20px,
+      pink 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle farthest-corner at 55px 35px,
+      pink 4px,
+      transparent 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #6E2C00 15px,
+      pink 15px,
+      pink 20px,
+      #6E2C00 20px,
+      #6E2C00 30px,
+      pink 30px,
+      pink 35px,
+      #6E2C00 35px
+    );
+}
+
+.cake::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 90px;
+  border-radius: 6px 6px 0px 0px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 85px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 65px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 0px,
+      pink 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle farthest-corner at 5px 0px,
+      pink 10px,
+      transparent 10px
+    );
+}
+
+.cake::after {
+  position: absolute;
+  top: -20px;
+  content: "";
+  height: 20px;
+  width: 90px;
+  background: 
+    radial-gradient(
+      circle farthest-corner at 65px 18px,
+      #C0392B 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 45px 18px,
+      #C0392B 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle farthest-corner at 25px 18px,
+      #C0392B 8px,
+      transparent 8px
+    );
+}
+	 
+
+@media screen and (max-width: 720px) {
+  body {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+}
+	    
+
+
+    </style> 
+  </head> 
+  <body>
+    <div class="cover-container"> 
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">JumboBell</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+         <a class="nav-link" href="home.html">Home</a>
+          <a class="nav-link" href="menu.html">Menus</a>
+          <a class="nav-link" href="about.html">About Us</a>
+          <a class="nav-link" href="account.html">Account</a>
+          <!-- else log out -->
+        </div> 
+      </div> 
+    </div>
+  </nav>
+    </div>
+    
+      <br>
+      <br>
+      <div class="animation">
+	<div class="container1">
+          <div class="lid"></div>
+          <div class="cake" onclick = "location.href='menu.html/breakfast';"></div>
+          <div class="plate"></div>
+		<div class="mealhead">Breakfast</div>
+	</div>
+	   
+	
+	 <div class="container1">
+          <div class="lid"></div>
+          <div class="taco" onclick = "location.href='menu.html/lunch';"></div>
+          <div class="plate"></div>
+		<div class="mealhead">Lunch</div>
+        </div>
+	      
+        <div class="container1">
+          <div class="lid"></div>
+          <div class="pasta" onclick = "location.href='menu.html/dinner';"></div>
+          <div class="plate"></div>
+		<div class="mealhead">Dinner</div>
+	 </div>
+    
+        
+      </div>
+      
+	    
+	    
+<!--       <div class="caleb">
+        
+                  <form action = "https://jumbo-bell.herokuapp.com/menu.html/process" method = "GET">
+           <button onclick="toggle1()">breakfast</button>
+	   <table id="myDIV">
+		  <tr>
+		    <th>Dining Hall</th>
+		    <th>Meal</th>
+		    <th>Food</th>
+		    <th>By #date</th>
+		  </tr>
+	   </table>
+	  <script language="javascript">
+      function toggle1() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+	} 
+			  </script>
+           <input type="submit" value="lunch">
+           <input type="submit" value="dinner">
+			  
+			  
+			  
+			  
+            </form>
+
+
+      
+      </div>  -->
+    
+    	    	    <div class="footer bg-light py-3 fixed-bottom">
+	    <div class="footer-container">
+      <span class="text-muted">&copy; JumboBell 2021</span>
+    </div>
+	  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script> 
+  </body>
+</html>

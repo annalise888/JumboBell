@@ -239,7 +239,7 @@ app.get('/menu.html/dinner',function (req,res) {
 					  res.write(dinner);
 					  res.write("<script>");
 					  res.write("function getFormData(){");
-					  res.write("var check = "";");
+					  res.write("var check = '';");
 					  res.write(" var items = document.getElementsByName('bfast');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");

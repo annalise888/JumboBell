@@ -116,7 +116,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 							  }
 						  }
 						  if (!repeatedvalue) {
-							  bfast += ("<input type='checkbox'  onchange='getFormData()' name='bfast" + i + "'>" + items[i].food + "</input>" + "<br>");
+							  bfast += ("<input type='checkbox'  onchange='getFormData()' name='bfast'>" + items[i].food + "</input>" + "<br>");
 						  }
 						  bfastarr.push(items[i].food);
 
@@ -129,7 +129,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  res.write("<script>");
 					  res.write("function getFormData(){");
 					  res.write("var check = 0;");
-					  res.write(" var items = document.getElementsByName('bfast" + i+ "');");
+					  res.write(" var items = document.getElementsByName('bfast');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");
 					  res.write("++check;}}");

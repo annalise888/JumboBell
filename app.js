@@ -128,11 +128,11 @@ app.get('/menu.html/breakfast',function(req,res) {
 
 					  res.write("<script>");
 					  res.write("function getFormData(){");
-					  res.write("var check = 0;");
+					  res.write("var check ='';");
 					  res.write(" var items = document.getElementsByName('bfast');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");
-					  res.write("++check;}}");
+					  res.write("check += items[i].innerHTML;}}");
 					  res.write("document.getElementById('hidden').value = check;");
 					  res.write("};");
 					  res.write("</script>");
@@ -239,11 +239,11 @@ app.get('/menu.html/dinner',function (req,res) {
 					  res.write(dinner);
 					  res.write("<script>");
 					  res.write("function getFormData(){");
-					  res.write("var check = 0;");
+					  res.write("var check = "";");
 					  res.write(" var items = document.getElementsByName('bfast');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");
-					  res.write("++check;}}");
+					  res.write("check += items[i].innerHTML;}}");
 					  res.write("document.getElementById('hidden').innerHTML = check;");
 					  res.write("};");
 					  res.write("</script>");
@@ -297,15 +297,6 @@ app.get('/menu.html', function (req, res) {
      res.write(txt);
      setTimeout(function(){res.end();}, 2000);
    });
-});
-app.get('/account.html',function (req,res) {
-	file = 'account.html';
- 	fs.readFile(file, function(err, txt) {
-    		if(err) { return console.log(err); }
-     		res.writeHead(200, {'Content-Type': 'text/html'});
-     		res.write(txt);
-     		setTimeout(function(){res.end();}, 2000);
-   	});
 });
 
 // code to get all of current users favorite foods being served 
@@ -378,6 +369,56 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 
             setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
         })
+
+        
+    }
+    
+    
+    
+    function getfoods(foodName ) {
+                
+        MongoClient.connect(foodsurl,{useUnifiedTopology:true},function(err, db ) {
+            
+            var dbo = db.db("tuftsdining");
+            var coll = dbo.collection("menu");
+
+            
+            
+            if (err) {
+                console.log("Connection err: " + err);
+            }
+            
+            var query = {food:{$regex : ".*" + foodName + ".*"}}
+    
+            //var sendstring = "";
+            
+            coll.find(query).toArray(function(err,items) {
+                if (err) {
+                   res.write("Error: " + err);
+                } else if (items.length == 0) {
+                    res.write(" No food being served with the name " + foodName);
+                    res.write("<br>")
+
+                } else {
+                    for (i=0; i < items.length; i++) {
+                        res.write(" user food: " + foodName + " served food: " + items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + "<br>");
+                        //sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " <br>") ;
+                        //console.log(sendstring);
+                    }
+                }
+                
+                //res.write(sendstring);
+
+            })
+            
+        
+
+
+
+
+        
+        setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+    })
 
         
     }

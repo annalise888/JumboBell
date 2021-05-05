@@ -116,7 +116,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 							  }
 						  }
 						  if (!repeatedvalue) {
-							  bfast += ("<input type='checkbox'  onchange='getFormData()' name='bfast' value = " + items[i].food + " ></input>" + "<br>");
+							  bfast += ("<input type='checkbox'  onchange='getFormData()' name='bfast' value = '" + items[i].food + "' >" + items[i].food +  " </input>" + "<br>");
 						  }
 						  bfastarr.push(items[i].food);
 

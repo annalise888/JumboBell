@@ -132,7 +132,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  res.write(" var items = document.getElementsByName('bfast');");
 					  res.write("for (var i = 0; i < items.length; i++) {");
 					  res.write("if (items[i].checked == true) {");
-					  res.write("check += items[i].value;}}");
+					  res.write("check = check + items[i].value + ',';}}");
 					  res.write("document.getElementById('hidden').value = check;");
 					  res.write("};");
 					  res.write("</script>");

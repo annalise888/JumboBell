@@ -555,87 +555,87 @@ app.get('/my_choice.html/userprocess', function (req, res) {
 
 });
 
-app.get('/menu.html', function (req, res) {
-	file = 'menu.html';
-	  fs.readFile(file, function(err, txt) {
-	      if(err) { return console.log(err); }
-	      res.writeHead(200, {'Content-Type': 'text/html'});
-	      res.write(txt);
-	    });
+// app.get('/menu.html', function (req, res) {
+// 	file = 'menu.html';
+// 	  fs.readFile(file, function(err, txt) {
+// 	      if(err) { return console.log(err); }
+// 	      res.writeHead(200, {'Content-Type': 'text/html'});
+// 	      res.write(txt);
+// 	    });
 	
-	    //actual mongo query 
-    MongoClient.connect(url2, { useUnifiedTopology: true }, function(err, db) {
-        if(err) { res.write("Connection err: " + err); return; }
+// 	    //actual mongo query 
+//     MongoClient.connect(url2, { useUnifiedTopology: true }, function(err, db) {
+//         if(err) { res.write("Connection err: " + err); return; }
         
-        var dbo = db.db("tuftsdining");
+//         var dbo = db.db("tuftsdining");
         
-        console.log(3);
-        
-        
-        var coll = dbo.collection('menu');
-        
-        console.log(4);
+//         console.log(3);
         
         
+//         var coll = dbo.collection('menu');
         
-        var myquery = {  };
+//         console.log(4);
         
-        //here, the query is for things where the ticker is the same as user input
         
-        coll.find( ).toArray(function(err, items) {
+        
+//         var myquery = {  };
+        
+//         //here, the query is for things where the ticker is the same as user input
+        
+//         coll.find( ).toArray(function(err, items) {
             
-            if (err) {
-                res.write("Error: " + err);  
-            } 
+//             if (err) {
+//                 res.write("Error: " + err);  
+//             } 
             
-            if( items.length == 0 ) {
-                res.write("no foods.");
-            }
+//             if( items.length == 0 ) {
+//                 res.write("no foods.");
+//             }
             
-            else   {
+//             else   {
                 
                 
-                //really stupid: going through this array like 30 times 
-                mealarr = [];
-                mealarr = ["breakfast", "Lunch", "Dinner"];
+//                 //really stupid: going through this array like 30 times 
+//                 mealarr = [];
+//                 mealarr = ["breakfast", "Lunch", "Dinner"];
                 
                 
-                for(var numday = 0; numday < 7; numday ++ ) {
+//                 for(var numday = 0; numday < 7; numday ++ ) {
                     
-                    for(var currmeal = 0; currmeal < 3; currmeal ++) {
+//                     for(var currmeal = 0; currmeal < 3; currmeal ++) {
                         
-                        for (i=0; i<items.length; i++) {
+//                         for (i=0; i<items.length; i++) {
                             
                             
-                            if(items[i].numdate == numday && items[i].meal == mealarr[currmeal]) {
-                                res.write("hall: " + items[i].hall + " meal: " + items[i].meal + " food: " + items[i].food  + " date: " + items[i].longdate);
-                                res.write( "<br>" );
+//                             if(items[i].numdate == numday && items[i].meal == mealarr[currmeal]) {
+//                                 res.write("hall: " + items[i].hall + " meal: " + items[i].meal + " food: " + items[i].food  + " date: " + items[i].longdate);
+//                                 res.write( "<br>" );
                                 
-                            }
+//                             }
                             
-                        }
+//                         }
                         
-                    }                        
+//                     }                        
                     
-                }
+//                 }
                 
-            }
+//             }
             
-            db.close();
+//             db.close();
             
-        })
+//         })
         
         
         
         
-    });  //end connect
+//     });  //end connect
 
 	
 	
 	
-	//end of code for connecting to database and printing all menus 
-	setTimeout(function(){res.end();}, 2000);
-});
+// 	//end of code for connecting to database and printing all menus 
+// 	setTimeout(function(){res.end();}, 2000);
+// });
 
 
 app.listen(port, function() {console.log("server started successfully");});

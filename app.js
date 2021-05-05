@@ -180,7 +180,7 @@ app.get('/menu.html/lunch',function (req,res) {
 							  }
 						  }
 						  if (!repeatedvalue) {
-							  lunch += ("<input type='checkbox' name='lunch" + i + "'>" + items[i].food + "</input>" + "<br>");
+							  lunch += ("<input type='checkbox'  onchange='getFormData()' name='lunch' value = '" + items[i].food + "' >" + items[i].food +  " </input>" + "<br>");
 						  }
 						  luncharr.push(items[i].food);
 
@@ -230,7 +230,7 @@ app.get('/menu.html/dinner',function (req,res) {
 							  }
 						  }
 						  if (!repeatedvalue) {
-							  dinner += ("<input type='checkbox' name='dinner" + i + "'>" + items[i].food + "</input>" + "<br>");
+							  dinner += ("<input type='checkbox'  onchange='getFormData()' name='dinner' value = '" + items[i].food + "' >" + items[i].food +  " </input>" + "<br>");
 						  }
 						  dinnerarr.push(items[i].food);
 

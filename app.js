@@ -149,7 +149,7 @@ app.get('/menu.html/lunch',function (req,res) {
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
 			  var luncharr = [];
-			  coll.find({meal:"lunch"}).toArray(function(err,items) {
+			  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 				  if(err) {
 					  console.log("Error: " + err);
 				  } else {

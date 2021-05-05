@@ -318,6 +318,10 @@ app.get('/account.html',function(req,res) {
      	if(err) { return console.log(err); }
      	res.writeHead(200, {'Content-Type': 'text/html'});
      	res.write(txt);
+		
+	
+	res.write("My Favorites: ");
+		//display user database favorite foods data
      	setTimeout(function(){res.end();}, 2000);
    });
 });

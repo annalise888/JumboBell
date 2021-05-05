@@ -96,7 +96,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 			var coll = dbo.collection("menu");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
-			  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
+			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 
 			  var bfastarr = [];
 			  coll.find({meal:"breakfast"}).toArray(function(err,items) {
@@ -149,7 +149,7 @@ app.get('/menu.html/lunch',function (req,res) {
 			var coll = dbo.collection("menu");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
-			  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
+			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 			  var luncharr = [];
 			  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 				  if(err) {
@@ -199,7 +199,7 @@ app.get('/menu.html/dinner',function (req,res) {
 			var coll = dbo.collection("menu");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
-			  res.write("<input type='submit' value='Add Selected Food to Favorites'/>");
+			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 			  var dinnerarr = [];
 			  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 				  if(err) {

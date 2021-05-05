@@ -126,9 +126,10 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
+			  setTimeout(function(){db.close;}, 2000);
 			  
 		  });
-		setTimeout(function(){dbo.close;}, 2000);
+		
 	});
 	
 });
@@ -226,8 +227,9 @@ app.get('/menu.html/dinner',function (req,res) {
 					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
+			  setTimeout(function(){db.close;}, 2000);
 		  });
-		setTimeout(function(){dbo.close;}, 2000);
+		
 	});
 });
 app.post('/menu.html/process', function (req, res) {

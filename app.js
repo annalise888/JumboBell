@@ -123,6 +123,16 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  }
 					  bfast += ("</div>");
 					  res.write(bfast);
+					  res.write("<script>");
+					  res.write("function getFormData(){");
+					  res.write("var check = 0;");
+					  res.write(" var items = document.getElementsByName('bfast');");
+					  res.write("for (var i = 0; i < items.length; i++) {");
+					  res.write("if (items[i].checked == true) {");
+					  res.write("++check;}}");
+					  res.write("document.getElementById('hidden').innerHTML = check;");
+					  res.write("};");
+					  res.write("</script>");
 					  res.write("</form>");
 					  setTimeout(function(){res.end();}, 2000);
 				  }

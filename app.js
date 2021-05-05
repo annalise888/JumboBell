@@ -123,6 +123,9 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  }
 					  bfast += ("</div>");
 					  res.write(bfast);
+					  res.write("<input type = 'text' id = 'hidden' >");
+					  res.write("</form>");
+
 					  res.write("<script>");
 					  res.write("function getFormData(){");
 					  res.write("var check = 0;");
@@ -133,7 +136,6 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  res.write("document.getElementById('hidden').innerHTML = check;");
 					  res.write("};");
 					  res.write("</script>");
-					  res.write("</form>");
 					  setTimeout(function(){res.end();}, 2000);
 				  }
 			  });
